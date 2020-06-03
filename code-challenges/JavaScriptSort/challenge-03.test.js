@@ -19,7 +19,18 @@ const $ = createSnippetWithJQuery(`
 
 const changeAllClassNames = () => {
   // Solution code here...
+
 }
+
+// describe('Testing challenge 1', () => {
+//   test('It should add a class of fruit to all the list items', () => {
+//     changeAllClassNames();
+
+//     expect($('li.apple').hasClass('fruit')).toBe(true);
+//     expect($('li.orange').hasClass('fruit')).toBe(true);
+//   })
+// })
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
