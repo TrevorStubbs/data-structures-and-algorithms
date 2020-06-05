@@ -122,37 +122,17 @@ const gruffaloCrumble = {
   ]
 };
 
-
-// const listFoods = (recipe) => {
-//   let result = [];
-//   for(let i = 0; i < recipe.ingredients.length; i++){
-//     let spaceNumber = recipe.ingredients.length.indexOf(' ');
-//     let newString = recipe.ingredients.length.slice(spaceNumber + 1);
-//     spaceNumber = newString.indexOf(' ');
-//     let finalString = newString.slice(spaceNumber + 1);
-//     result.push(finalString);
-//   }
-//   return result;
-// };
-
 const listFoods = (recipe) => {
   let result = [];
-  for(let i = 0; i < recipe.ingredients.length; i++){
-    let spaceNumber = recipe.ingredients[i].indexOf(' ');
-    let newString = recipe.ingredients[i].slice(spaceNumber + 1);
+  recipe.ingredients.forEach(value => {
+    let spaceNumber = value.indexOf(' ');
+    let newString = value.slice(spaceNumber + 1);
     spaceNumber = newString.indexOf(' ');
     let finalString = newString.slice(spaceNumber + 1);
     result.push(finalString);
-  }
+  })
   return result;
 };
-
-// describe('Testing challenge 4', () => {
-//   test('It should return a list of foods', () => {
-//     expect(listFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
-//     expect(listFoods(gruffaloCrumble).length).toStrictEqual(11);
-//   });
-// });
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
