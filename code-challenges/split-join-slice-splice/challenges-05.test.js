@@ -36,10 +36,7 @@ let $ = createSnippetWithJQuery(`
 </main>
 `);
 
-
-
 const templateWithJQuery = () => {
-  // Solution code here...
   starWarsPeople.forEach(value => {
     let myTemplate = $('#template').html();
     const $newSection = $(`<section>${myTemplate}</section>`);
@@ -65,7 +62,11 @@ For example, if the input is 'Welcome', the output will be:
 
 const howMuchPencil = (str) => {
   let result = [];
-  // Solution code here...
+  let newString = '';
+  for(let i = 0; i <= str.length; i++) {
+    newString = str.slice(i);
+    result.push(newString);
+  }
   return result;
 };
 
@@ -78,9 +79,8 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
 const wordsToCharList = (arr) => {
-  // Solution code here...
+  return arr.split('');
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
