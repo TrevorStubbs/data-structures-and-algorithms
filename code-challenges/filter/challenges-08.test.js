@@ -22,7 +22,7 @@ const createServer = () => {
 
 
 function sayHello(request, response){
-  // Solution code here...
+  response.status(200).send('Hello from the back-end');
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -34,7 +34,8 @@ For example, oddValues([1,2,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const oddValues = (arr) => {
-  // Solution code here...
+  const outputArray = arr.filter(value => value % 2 !== 0);
+  return outputArray
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -49,8 +50,9 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 
 
 const filterStringsWithVowels = (arr) => {
-  // Solution code here...
-};
+  let regex = /[aeiou]/gi;
+  const outputArray = arr.filter( value => value.match(regex));
+  return outputArray;};
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -62,7 +64,8 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
 const notInFirstArray = (forbiddenValues, arr) => {
-  // Solution code here...
+  const unique = arr.filter ( value => forbiddenValues.includes(value) === false);
+  return unique;
 };
 
 /* ------------------------------------------------------------------------------------------------
