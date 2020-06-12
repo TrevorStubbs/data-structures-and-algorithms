@@ -25,8 +25,7 @@ const createServer = () => {
   const express=require('express');
   const app=express();
 
-  // Routes go here
-  // Solution code here...
+  app.get('/events', getCurrentEvents);
 
   var server = app.listen(3301, function () {
     var port = server.address().port;
@@ -160,15 +159,23 @@ const currentEvents = {
 }
 
 function getCurrentEvents(request, response){
-  // Solution code here...
+  response.status(200).send(mapCurrentEvents);
 }
 
+
+
 const mapCurrentEvents = () => {
-  // Solution code here...
+  const outputArray = currentEvents.news.map(value => new Event(value));
+  return outputArray;
 }
 
 function Event(obj){
-  // Solution code here...
+  this.author = obj.author;
+  this.categories = obj.category;
+  this.summary = obj.description;
+  this.img_url = obj.image;
+  this.date = obj.published;
+  this.title = obj.title;
 }
 
 /* ------------------------------------------------------------------------------------------------
