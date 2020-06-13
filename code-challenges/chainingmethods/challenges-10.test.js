@@ -7,7 +7,26 @@ Build a simple express server. Connect a '/hello' route that sends a greeting of
 ------------------------------------------------------------------------------------------------ */
 
 const createServer = () => {
-  // Solution code here...
+  const express = require('express');
+  const app = express();
+
+  app.get('/hello', (req, res) => {
+    console.log('Hello World');
+    res.status(200).send('Hello Browser');
+  })
+
+  app.get('/aboutme', (req, res) => {
+    res.status(200).send('I am a pilot and I like to code.');
+  })
+
+  app.get('/favoritefoods', (req, res) => {
+    let outputArray = ['prime rib', 'pizza', 'bangers and mash', 'sushi'];
+    res.status(200).send(outputArray);
+  })
+
+  app.get('*', (req, res) => {
+    res.status(404).send('sorry, this route does not exist');
+  })
 
   var server = app.listen(3301, function () {
     var port = server.address().port;
@@ -27,7 +46,15 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
-  // Solution code here...
+  let counter = 0;
+  const output = input.filter(value => {
+    const output2 = value.filter(item => {
+      if (item === target){
+        counter++;
+      }
+    })
+  })
+  return counter;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -41,7 +68,13 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
 const totalSum = (input) => {
-  // Solution code here...
+  let output = 0;
+  input.map(value1 => {
+    value1.map(value2 => {
+      output = value2 + output;
+    })
+  })
+  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -57,7 +90,16 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
+  const output = input.map (element => {
+    const internalOutput = element.reduce ( (acc, value) => {
+      if(value % 5 === 0 && typeof value !== 'string') {
+        acc.push(Math.pow(2, value))
+      }
+      return acc;
+    }, []);
+    return internalOutput;
+  })
+  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
