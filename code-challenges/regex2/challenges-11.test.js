@@ -12,7 +12,11 @@ Note the space in between first and last names.
 You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
-  // Solution code here...
+  let outputArray = [];
+  people.map(value => {
+    return outputArray.push(`${value.firstName} ${value.lastName}`);
+  })
+  return outputArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -24,7 +28,8 @@ If the PIN is four numerical digits long, return true. Otherwise, return false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePin = (pin) => {
-  // Solution code here...
+  let regex = /\b\d{4}\b/gm;
+  return regex.test(pin);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -44,7 +49,8 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  // Solution code here...
+  let regex = /^\w+(.\w+)?@\w+[.](com|org|net|edu)\b/gi
+  return regex.test(email);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -69,8 +75,8 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
-  // Solution code here...
-};
+  let regex = /^(\(\d{3}\)|\d{3})(\s|-)?(\d{3})(\s|-)?(\d{4})$/gm
+  return regex.test(phoneNumber)};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
