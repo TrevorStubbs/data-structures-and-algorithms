@@ -9,7 +9,10 @@ using the 'reduce' method.
 E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
-  // Solution code here...
+  let outputNumber = arr.reduce((acc, value, idx) => {
+    return (value > acc) ? value : acc;
+  }, []);
+  return outputNumber;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,8 +38,15 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
-
+  let outputArray = [];
+  for (let i = 0; i < hoursOpen.length; i++){
+    let counter = 0;
+    for (let j = 0; j < stores.length; j++){
+      counter += stores[j][i];
+    }
+    outputArray.push(counter);
+  }
+  return outputArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -50,7 +60,11 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  let outputArray = [];
+  hours.forEach( (hour, i )=> {
+    outputArray.push( {sales: `${data[i]} cookies`, time : hour})
+  })
+  return outputArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -75,7 +89,15 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  let outputNumber = 0;
+  arr.forEach(value => {
+    value.items.forEach(value2 => {
+      if(value2.name === 'Treats'){
+        outputNumber += value2.quantity;
+      }
+    })
+  })
+  return outputNumber;
 };
 
 /* ------------------------------------------------------------------------------------------------
