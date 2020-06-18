@@ -20,7 +20,7 @@ const $ = createSnippetWithJQuery(`
 `);
 
 const fixTheTypo = () => {
-// Solution code here...
+  $('ul li:nth-child(3)').text('Pear');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -33,6 +33,15 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 
 const firstLetters = (arr) => {
   // Solution code here...
+  let outputArray = [];
+  for (let i = 0; i < arr.length; i++){
+    for (let j = 0; j < arr[i].length; j++){
+      if(j === 0){
+        outputArray.push(arr[i][j]);
+      }
+    }
+  }
+  return outputArray
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -44,7 +53,13 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 ------------------------------------------------------------------------------------------------ */
 
 const findHappiness = (arr) => {
-  // Solution code here...
+  let outputArray = [];
+  for (let i = 0; i < arr.length; i++){
+    if(arr[i].includes(':)')){
+      outputArray.push(arr[i]);
+    }
+  }
+  return outputArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -56,7 +71,13 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-  // Solution code here...
+  let outputArray = [];
+  let regex = /[()-\s]/g
+  for(let i = 0; i < arr.length; i++){
+    let newString = arr[i].replace(regex, '');
+    outputArray.push(newString);
+  }
+  return outputArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
