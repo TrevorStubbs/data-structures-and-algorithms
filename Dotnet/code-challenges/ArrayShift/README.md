@@ -35,6 +35,10 @@ the new value added at the middle index.
 ![Whiteboard](assets/array-shift.png)
 - [Whiteboard](https://drive.google.com/file/d/1Ot9iCIbAn-8C6zUokZikqziJ96da5Oht/view?usp=sharing)
 
+---
+
+### Github Link
+- [GitHub](https://github.com/TrevorStubbs/data-structures-and-algorithms/blob/master/Dotnet/code-challenges/ArrayShift/ArrayShift/Program.cs)
 
 ---
 
