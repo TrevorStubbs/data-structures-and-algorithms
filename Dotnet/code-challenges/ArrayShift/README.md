@@ -25,7 +25,7 @@ the new value added at the middle index.
 
 | Time | Space |
 | :----------- | :----------- |
-| TODO | TODO |
+| O(n) | O(n + 1) |
 
 
 ---
@@ -39,7 +39,10 @@ the new value added at the middle index.
 ---
 
 ### Change Log
-1.0 Inital setup
+- 1.0 Inital setup
+- 1.1 Tests built
+- 1.2 Method Works
+- 1.3 Refactor and Comments
 
 ---
 

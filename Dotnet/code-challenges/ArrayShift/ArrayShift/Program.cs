@@ -4,6 +4,11 @@ namespace ArrayShift
 {
     public class Program
     {
+        /// <summary>
+        /// The insertion into the app by the CLR.
+        /// This also this demonstrates that the code challenge is complete
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             int[] providedArray1 = new int[] { 1, 4, 6, 8 };
@@ -29,6 +34,14 @@ namespace ArrayShift
 
         }
 
+        /// <summary>
+        /// This method makes a new array that is 1 space bigger than the input array.
+        /// It then assigns the value to the middle index in the array and then fills the rest of the new array
+        /// with the data from the old array. Then returns the new array to the caller.
+        /// </summary>
+        /// <param name="inputArray">The array that needs to be modified</param>
+        /// <param name="inputValue">The value that needs to be inserted into the array</param>
+        /// <returns>The new array with the inserted value in the middle.</returns>
         public static int[] InsertShiftArray(int[] inputArray, int inputValue)
         {
             int[] newArray = new int[inputArray.Length + 1];

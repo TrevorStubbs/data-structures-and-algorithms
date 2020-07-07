@@ -6,6 +6,9 @@ namespace ArrayShiftTests
 {
     public class UnitTest1
     {
+        /// <summary>
+        /// Tests to see if the first example provided is correct
+        /// </summary>
         [Fact]
         public void ReturnsExpectedArrayFromInsertShiftArray1()
         {
@@ -21,6 +24,9 @@ namespace ArrayShiftTests
             Assert.Equal(expectedArray, newArray);
         }
 
+        /// <summary>
+        /// Tests to see if the second example provided is correct
+        /// </summary>
         [Fact]
         public void ReturnsExpectedArrayFromInsertShiftArray2()
         {
