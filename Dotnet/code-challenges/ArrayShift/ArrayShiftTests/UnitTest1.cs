@@ -41,5 +41,35 @@ namespace ArrayShiftTests
             // assert
             Assert.Equal(expectedArray, newArray);
         }
+
+        [Fact]
+        public void DoesNotReturnABadArrayFromInsertShiftArray1()
+        {
+            // arrange
+            int[] testArray = new int[] { 4, 8, 15, 23, 42 };
+            int testValue = 16;
+            int[] expectedArray = new int[] { 4, 8, 15, 23, 16, 42 };
+
+            // Act
+            int[] newArray = InsertShiftArray(testArray, testValue);
+
+            // assert
+            Assert.NotEqual(expectedArray, newArray);
+        }
+
+        [Fact]
+        public void DoesNotReturnABadArrayFromInsertShiftArray2()
+        {
+            // arrange
+            int[] testArray = new int[] { 4, 8, 15, 23, 42, 156, 112 };
+            int testValue = 16;
+            int[] expectedArray = new int[] { 4, 8, 15, 23, 16, 42 };
+
+            // Act
+            int[] newArray = InsertShiftArray(testArray, testValue);
+
+            // assert
+            Assert.NotEqual(expectedArray, newArray);
+        }
     }
 }
