@@ -32,7 +32,7 @@ the new value added at the middle index.
 
 
 ### Whiteboard Visual
-![Whiteboard](assets/WhiteBoard.png)
+![Whiteboard](assets/array-shift.png)
 - [Whiteboard](https://drive.google.com/file/d/1Ot9iCIbAn-8C6zUokZikqziJ96da5Oht/view?usp=sharing)
 
 
