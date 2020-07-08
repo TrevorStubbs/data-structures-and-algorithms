@@ -1,6 +1,6 @@
 ## Array Shift
 *Author: Trevor Stubbs*
-
+*CoAuthor by: Diane Stephani*
 ---
 
 ### Problem Domain
