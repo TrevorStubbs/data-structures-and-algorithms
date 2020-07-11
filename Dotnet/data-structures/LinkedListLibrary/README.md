@@ -11,12 +11,12 @@ This Data Structure demonstrates how a linked list is constructed, iterated thro
 1. Can properly return a collection of all the values that exist in the linked list
 
 ## Approach & Efficiency
-LinkedList.Insert() - Time O(1), Space O(1).
-LinkedList.Includes() - Time O(n), Space O(1).
-LinkedList.ToString() - Time O(n), Space O(n).
+- LinkedList.Insert() - Time O(1), Space O(1).
+- LinkedList.Includes() - Time O(n), Space O(1).
+- LinkedList.ToString() - Time O(n), Space O(n).
 
 
 ## API
-LinkedList.Insert()
-LinkedList.Includes() 
-LinkedList.ToString() 
+- LinkedList.Insert()
+- LinkedList.Includes() 
+- LinkedList.ToString() 
