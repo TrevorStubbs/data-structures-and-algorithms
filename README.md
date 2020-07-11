@@ -6,3 +6,4 @@
     - Code Challenges
         - [Array Shift](Dotnet/code-challenges/ArrayShift/README.md)
     - Data Structures
+        - [Linked Lists](data-structures/LinkedListLibrary/README.md)
