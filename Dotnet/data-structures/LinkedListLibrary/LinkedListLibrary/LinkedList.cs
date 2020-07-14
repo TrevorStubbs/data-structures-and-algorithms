@@ -101,11 +101,11 @@ namespace LinkedListLibrary
         /// <summary>
         /// Insert a new node before a node with the value designated
         /// If there is not list start a new list
-        /// if there is not node withe the desingated value thow an exception
+        /// if there is not node withe the designated value throw an exception
         /// Time - O(n) Space - O(1)
         /// </summary>
         /// <param name="value">value of the node you are looking for</param>
-        /// <param name="newValue">the value of the new nodw</param>
+        /// <param name="newValue">the value of the new node</param>
         public void InsertBefore(int value, int newValue)
         {
             Node methodCurrent = Head;
@@ -116,7 +116,7 @@ namespace LinkedListLibrary
                 return;
             }
 
-            if (Current.Value == value)
+            if (methodCurrent.Value == value)
             {
                 Insert(newValue);
                 return;
@@ -144,11 +144,11 @@ namespace LinkedListLibrary
         /// <summary>
         /// Insert a new node after the node with the designated value
         /// If there is no list start a list with this node
-        /// If there is no node with the designated value then thow an error
+        /// If there is no node with the designated value then throw an error
         /// Time - O(n) Space - O(1)
         /// </summary>
         /// <param name="value">value of the node you are looking for</param>
-        /// <param name="newValue">the value of the new nodw</param>
+        /// <param name="newValue">the value of the new node</param>
         public void InsertAfter(int value, int newValue)
         {
             Node methodCurrent = Head;
@@ -172,7 +172,7 @@ namespace LinkedListLibrary
                     else
                     {
                         Node newNode = new Node(newValue);
-                        Node tempNode = methodCurrent.Next;///                        
+                        Node tempNode = methodCurrent.Next;                       
                         methodCurrent.Next = newNode;
                         newNode.Next = tempNode;
                         return;
@@ -185,6 +185,8 @@ namespace LinkedListLibrary
                 throw new Exception("That value does not exist.");
             }
         }
+
+
 
     }
 }
