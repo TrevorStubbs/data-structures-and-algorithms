@@ -133,5 +133,42 @@ namespace LinkedListLibrary
                 }
             }
         }
+
+        public void InsertAfter(int value, int newValue)
+        {
+            Node methodCurrent = Head;
+            if (Head == null)
+            {
+                Node newNode = new Node(newValue);
+                Head = newNode;
+                return;
+            }
+
+            while (methodCurrent != null)
+            {
+                if (methodCurrent.Value == value)
+                {
+                    if (methodCurrent.Next == null)
+                    {
+                        Node newNode = new Node(newValue);
+                        methodCurrent.Next = newNode;
+                        return;
+                    }
+                    else
+                    {
+                        Node newNode = new Node(newValue);
+                        Node tempNode = methodCurrent.Next;///                        
+                        methodCurrent.Next = newNode;
+                        newNode.Next = tempNode;
+                        return;
+                    }
+                }
+                methodCurrent = methodCurrent.Next;
+            }
+            if (methodCurrent.Next == null)
+            {
+                throw new Exception("That value does not exist.");
+            }
+        }
     }
 }

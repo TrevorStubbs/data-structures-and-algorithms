@@ -181,5 +181,71 @@ namespace LinkedListTests
 
             Assert.Equal(errorMessage, e.Message);
         }
+
+        [Fact]
+        public void CanAddAfter1()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(3);
+            list.Insert(1);
+
+            list.InsertAfter(3, 5);
+
+            string outputFromMethod = list.ToString();
+
+            string expected = "1 -> 3 -> 5 -> 2 -> Null";
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void CanAddAfter2()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(3);
+            list.Insert(1);
+
+            list.InsertAfter(2, 5);
+
+            string outputFromMethod = list.ToString();
+
+            string expected = "1 -> 3 -> 2 -> 5 -> Null";
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void CanAddAfter3()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(2);
+            list.Insert(1);
+
+            list.InsertAfter(2, 5);
+
+            string outputFromMethod = list.ToString();
+
+            string expected = "1 -> 2 -> 5 -> 2 -> Null";
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void CanAddAfter4()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(3);
+            list.Insert(1);
+
+            Exception e = Assert.Throws<System.Exception>(() => list.InsertBefore(4, 5));
+            string errorMessage = "That value does not exist.";
+
+            Assert.Equal(errorMessage, e.Message);
+        }
     }
 }
