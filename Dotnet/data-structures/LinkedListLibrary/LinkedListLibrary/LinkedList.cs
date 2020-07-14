@@ -34,6 +34,29 @@ namespace LinkedListLibrary
         }
 
         /// <summary>
+        /// Appends a new node to the end of the linked list
+        /// O(n)
+        /// </summary>
+        /// <param name="value"></param>
+        public void Append(int value)
+        {
+            Current = Head;
+            Node newNode = new Node(value);
+            if (Head == null)
+            {
+                Head = newNode;
+            }
+            else
+            {
+                while(Current.Next != null)
+                {
+                    Current = Current.Next;
+                }
+                Current.Next = newNode;
+            }            
+        }
+
+        /// <summary>
         /// Finds a specific value in the linked list
         /// O(n) time efficiency
         /// </summary>
@@ -50,6 +73,7 @@ namespace LinkedListLibrary
             }
             return false;
         }
+
 
         /// <summary>
         /// Overriding current behavior of ToString method to output all values in the linked list a string

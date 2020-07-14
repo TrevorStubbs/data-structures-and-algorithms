@@ -86,5 +86,34 @@ namespace LinkedListTests
             string expected = "42 -> 23 -> 15 -> 12 -> 8 -> 4 -> Null";
             Assert.Equal(expected, outputFromMethod);
         }
+
+        [Fact]
+        public void CanReturnValuesInLinkedListsAfterUsingAppend()
+        {
+            LinkedList list = new LinkedList();
+            list.Insert(2);
+            list.Insert(3);
+            list.Insert(1);
+
+            list.Append(5);
+
+            string outputFromMethod = list.ToString();
+
+            string expected = "1 -> 3 -> 2 -> 5 -> Null";
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void `IfListIsEmpty()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Append(1);
+
+            string outputFromMethod = list.ToString();
+
+            string expected = "1 -> Null";
+            Assert.Equal(expected, outputFromMethod);
+        }
     }
 }
