@@ -31,7 +31,6 @@ namespace LinkedListLibrary
             Node node = new Node(value);
             node.Next = Head;
             Head = node;
-            Current = Head; //
         }
 
         /// <summary>
@@ -49,7 +48,6 @@ namespace LinkedListLibrary
                     return true;
                 Current = Current.Next;
             }
-            Current = Head;
             return false;
         }
 
@@ -75,6 +73,7 @@ namespace LinkedListLibrary
 
             return sb.ToString();
         }
+
 
         /// <summary>
         /// Appends a new node to the end of the linked list
@@ -186,5 +185,6 @@ namespace LinkedListLibrary
                 throw new Exception("That value does not exist.");
             }
         }
+
     }
 }

@@ -1,7 +1,7 @@
 # Singly Linked List
 This Data Structure demonstrates how a linked list is constructed, iterated through and show all the values in the list. 
 
-## Challenge 05
+## Challenge
 1. Can successfully instantiate an empty linked list
 1. Can properly insert into the linked list
 1. The head property will properly point to the first node in the linked list
@@ -46,3 +46,5 @@ This Data Structure demonstrates how a linked list is constructed, iterated thro
 ![Whiteboard](assets/Day06LinkedLists.png)
 
 ---
+
+
