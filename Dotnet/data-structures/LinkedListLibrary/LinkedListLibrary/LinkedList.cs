@@ -31,29 +31,7 @@ namespace LinkedListLibrary
             Node node = new Node(value);
             node.Next = Head;
             Head = node;
-        }
-
-        /// <summary>
-        /// Appends a new node to the end of the linked list
-        /// O(n)
-        /// </summary>
-        /// <param name="value"></param>
-        public void Append(int value)
-        {
-            Current = Head;
-            Node newNode = new Node(value);
-            if (Head == null)
-            {
-                Head = newNode;
-            }
-            else
-            {
-                while(Current.Next != null)
-                {
-                    Current = Current.Next;
-                }
-                Current.Next = newNode;
-            }            
+            Current = Head; //
         }
 
         /// <summary>
@@ -71,9 +49,9 @@ namespace LinkedListLibrary
                     return true;
                 Current = Current.Next;
             }
+            Current = Head;
             return false;
         }
-
 
         /// <summary>
         /// Overriding current behavior of ToString method to output all values in the linked list a string
@@ -96,6 +74,64 @@ namespace LinkedListLibrary
             sb.Append("Null");
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Appends a new node to the end of the linked list
+        /// O(n)
+        /// </summary>
+        /// <param name="value"></param>
+        public void Append(int value)
+        {
+            Current = Head;
+            Node newNode = new Node(value);
+            if (Head == null)
+            {
+                Head = newNode;
+            }
+            else
+            {
+                while (Current.Next != null)
+                {
+                    Current = Current.Next;
+                }
+                Current.Next = newNode;
+            }
+        }
+
+        public void InsertBefore(int value, int newValue)
+        {
+            Node methodCurrent = Head;
+            if (Head == null)
+            {
+                Node newNode = new Node(newValue);
+                Head = newNode;
+                return;
+            }
+
+            if (Current.Value == value)
+            {
+                Insert(newValue);
+                return;
+            }
+
+            while (methodCurrent.Next != null)
+            {
+                if (methodCurrent.Next.Value == value)
+                {
+                    Node newNode = new Node(newValue);
+                    Node tempNode = methodCurrent.Next;
+                    newNode.Next = tempNode;
+                    methodCurrent.Next = newNode;
+                    methodCurrent = tempNode;
+                    return;
+                }
+                methodCurrent = methodCurrent.Next;
+                if (methodCurrent.Next == null)
+                {
+                    throw new Exception("That value does not exist.");
+                }
+            }
         }
     }
 }

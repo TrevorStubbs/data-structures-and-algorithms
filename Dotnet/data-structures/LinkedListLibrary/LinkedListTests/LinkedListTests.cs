@@ -104,7 +104,7 @@ namespace LinkedListTests
         }
 
         [Fact]
-        public void `IfListIsEmpty()
+        public void CanAppendIfListIsEmpty()
         {
             LinkedList list = new LinkedList();
 
@@ -114,6 +114,72 @@ namespace LinkedListTests
 
             string expected = "1 -> Null";
             Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void CanAddBefore1()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(3);
+            list.Insert(1);
+
+            list.InsertBefore(3, 5);
+
+            string outputFromMethod = list.ToString();
+
+            string expected = "1 -> 5 -> 3 -> 2 -> Null";
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void CanAddBefore2()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(3);
+            list.Insert(1);
+
+            list.InsertBefore(1, 5);
+
+            string outputFromMethod = list.ToString();
+
+            string expected = "5 -> 1 -> 3 -> 2 -> Null";
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void CanAddBefore3()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(2);
+            list.Insert(1);
+
+            list.InsertBefore(2, 5);
+
+            string outputFromMethod = list.ToString();
+
+            string expected = "1 -> 5 -> 2 -> 2 -> Null";
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void CanAddBefore4()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(3);
+            list.Insert(1);
+
+            Exception e = Assert.Throws<System.Exception>(() => list.InsertBefore(4, 5));
+            string errorMessage = "That value does not exist.";
+
+            Assert.Equal(errorMessage, e.Message);
         }
     }
 }
