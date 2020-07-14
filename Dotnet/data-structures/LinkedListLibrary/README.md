@@ -20,3 +20,31 @@ This Data Structure demonstrates how a linked list is constructed, iterated thro
 - LinkedList.Insert()
 - LinkedList.Includes() 
 - LinkedList.ToString() 
+
+---
+
+## Challenge 06
+1. Can successfully add a node to the end of the linked list
+1. Can successfully add multiple nodes to the end of a linked list
+1. Can successfully insert a node before a node located i the middle of a linked list
+1. Can successfully insert a node before the first node of a linked list
+1. Can successfully insert after a node in the middle of the linked list
+1. Can successfully insert a node after the last node of the linked list
+
+## Approach & Efficiency
+- LinkedList.Append() - Time O(n), Space O(1).
+- LinkedList.InsertBefore() - Time O(n), Space O(1).
+- LinkedList.InsertAfter() - Time O(n), Space O(1).
+
+
+## API
+- LinkedList.Append()
+- LinkedList.InsertBefore()
+- LinkedList.InsertAfter()
+
+## Whiteboard
+![Whiteboard](assets/Day06LinkedLists.png)
+
+---
+
+
