@@ -44,3 +44,5 @@ This Data Structure demonstrates how a linked list is constructed, iterated thro
 
 ## Whiteboard
 ![Whiteboard](assets/Day06LinkedLists.png)
+
+---
