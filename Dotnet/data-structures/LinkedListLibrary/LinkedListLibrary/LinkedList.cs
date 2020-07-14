@@ -99,6 +99,14 @@ namespace LinkedListLibrary
             }
         }
 
+        /// <summary>
+        /// Insert a new node before a node with the value designated
+        /// If there is not list start a new list
+        /// if there is not node withe the desingated value thow an exception
+        /// Time - O(n) Space - O(1)
+        /// </summary>
+        /// <param name="value">value of the node you are looking for</param>
+        /// <param name="newValue">the value of the new nodw</param>
         public void InsertBefore(int value, int newValue)
         {
             Node methodCurrent = Head;
@@ -134,6 +142,14 @@ namespace LinkedListLibrary
             }
         }
 
+        /// <summary>
+        /// Insert a new node after the node with the designated value
+        /// If there is no list start a list with this node
+        /// If there is no node with the designated value then thow an error
+        /// Time - O(n) Space - O(1)
+        /// </summary>
+        /// <param name="value">value of the node you are looking for</param>
+        /// <param name="newValue">the value of the new nodw</param>
         public void InsertAfter(int value, int newValue)
         {
             Node methodCurrent = Head;
