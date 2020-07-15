@@ -4,7 +4,7 @@ using LinkedListLibrary;
 
 namespace LinkedListTests
 {
-    public class LinkedListTestsDay05
+    public class LinkedListCreatingInsertingFindingAValueTests
     {
         [Fact]
         public void CanInstantiateEmptyLinkedList()
@@ -88,10 +88,10 @@ namespace LinkedListTests
         }
     }
 
-    public class LinkedListTestsDay06
+    public class LinkedListAppendAddBeforeAddAfterTests
     {
         [Fact]
-        public void CanReturnValuesInLinkedListsAfterUsingAppend()
+        public void CanAddANodeToTheEndOfALinkedList()
         {
             LinkedList list = new LinkedList();
             list.Insert(2);
@@ -111,8 +111,20 @@ namespace LinkedListTests
             string expected = "1 -> Null";
             Assert.Equal(expected, outputFromMethod);
         }
+
         [Fact]
-        public void CanAddBefore1()
+        public void CanAppendMutlipuleNodesToTheEndOfALinkedList()
+        {
+            LinkedList list = new LinkedList();
+            list.Append(1);
+            list.Append(2);
+            string outputFromMethod = list.ToString();
+            string expected = "1 -> 2 -> Null";
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void CanInsertANodeLocatedInTheMiddleOfALinkedList()
         {
             LinkedList list = new LinkedList();
             list.Insert(2);
@@ -124,7 +136,7 @@ namespace LinkedListTests
             Assert.Equal(expected, outputFromMethod);
         }
         [Fact]
-        public void CanAddBefore2()
+        public void CanInsertANodeBeforeTheFirstNodeInALinkedList()
         {
             LinkedList list = new LinkedList();
             list.Insert(2);
@@ -148,7 +160,7 @@ namespace LinkedListTests
             Assert.Equal(expected, outputFromMethod);
         }
         [Fact]
-        public void CanAddBefore4()
+        public void WillThrowAnErrorIfTheValueDoesNotExsistInALinkedListUsingInsertBefore()
         {
             LinkedList list = new LinkedList();
             list.Insert(2);
@@ -161,7 +173,7 @@ namespace LinkedListTests
         }
 
         [Fact]
-        public void CanAddAfter1()
+        public void CanInsertANodeInTheMiddleOfTheLinkedList()
         {
             LinkedList list = new LinkedList();
 
@@ -178,24 +190,7 @@ namespace LinkedListTests
         }
 
         [Fact]
-        public void CanAddAfter2()
-        {
-            LinkedList list = new LinkedList();
-
-            list.Insert(2);
-            list.Insert(3);
-            list.Insert(1);
-
-            list.InsertAfter(2, 5);
-
-            string outputFromMethod = list.ToString();
-
-            string expected = "1 -> 3 -> 2 -> 5 -> Null";
-            Assert.Equal(expected, outputFromMethod);
-        }
-
-        [Fact]
-        public void CanAddAfter3()
+        public void CanInsertANodeInTheMiddleOfTheLinkedListV2()
         {
             LinkedList list = new LinkedList();
 
@@ -212,7 +207,7 @@ namespace LinkedListTests
         }
 
         [Fact]
-        public void CanAddAfter4()
+        public void CanInsertANodeAfterTheLastNodeOfTheLinkedList()
         {
             LinkedList list = new LinkedList();
 
@@ -220,13 +215,30 @@ namespace LinkedListTests
             list.Insert(3);
             list.Insert(1);
 
-            Exception e = Assert.Throws<System.Exception>(() => list.InsertBefore(4, 5));
+            list.InsertAfter(2, 5);
+
+            string outputFromMethod = list.ToString();
+
+            string expected = "1 -> 3 -> 2 -> 5 -> Null";
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void WillThrowAnErrorIfTheValueDoesNotExsistInALinkedListUsingInsertAfter()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(3);
+            list.Insert(1);
+
+            Exception e = Assert.Throws<System.Exception>(() => list.InsertAfter(4, 5));
             string errorMessage = "That value does not exist.";
 
             Assert.Equal(errorMessage, e.Message);
         }
     }
-    public class LinkedListTestsDay7
+    public class LinkedListTestsFindTheKthNodeTests
     { 
         [Fact]
         public void ReturnsExceptionWhenKIsLargerThanTheList()
