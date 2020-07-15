@@ -91,7 +91,7 @@ namespace LinkedListTests
     public class LinkedListTestsDay06
     {
         [Fact]
-        public void CanReturnValuesInLinkedListsAfterUsingAppend()
+        public void CanAddANodeToTheEndOfALinkedList()
         {
             LinkedList list = new LinkedList();
             list.Insert(2);
@@ -111,8 +111,20 @@ namespace LinkedListTests
             string expected = "1 -> Null";
             Assert.Equal(expected, outputFromMethod);
         }
+
         [Fact]
-        public void CanAddBefore1()
+        public void CanAppendMutlipuleNodesToTheEndOfALinkedList()
+        {
+            LinkedList list = new LinkedList();
+            list.Append(1);
+            list.Append(2);
+            string outputFromMethod = list.ToString();
+            string expected = "1 -> 2 -> Null";
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void CanInsertANodeLocatedInTheMiddleOfALinkedList()
         {
             LinkedList list = new LinkedList();
             list.Insert(2);
@@ -124,7 +136,7 @@ namespace LinkedListTests
             Assert.Equal(expected, outputFromMethod);
         }
         [Fact]
-        public void CanAddBefore2()
+        public void CanInsertANodeBeforeTheFirstNodeInALinkedList()
         {
             LinkedList list = new LinkedList();
             list.Insert(2);
@@ -148,7 +160,7 @@ namespace LinkedListTests
             Assert.Equal(expected, outputFromMethod);
         }
         [Fact]
-        public void CanAddBefore4()
+        public void WillThrowAnErrorIfTheValueDoesNotExsistInALinkedListUsingInsertBefore()
         {
             LinkedList list = new LinkedList();
             list.Insert(2);
@@ -161,7 +173,7 @@ namespace LinkedListTests
         }
 
         [Fact]
-        public void CanAddAfter1()
+        public void CanInsertANodeInTheMiddleOfTheLinkedList()
         {
             LinkedList list = new LinkedList();
 
@@ -178,7 +190,7 @@ namespace LinkedListTests
         }
 
         [Fact]
-        public void CanAddAfter2()
+        public void CanInsertANodeAfterTheLastNodeOfTheLinkedList()
         {
             LinkedList list = new LinkedList();
 
@@ -212,7 +224,7 @@ namespace LinkedListTests
         }
 
         [Fact]
-        public void CanAddAfter4()
+        public void WillThrowAnErrorIfTheValueDoesNotExsistInALinkedListUsingInsertAfter()
         {
             LinkedList list = new LinkedList();
 
@@ -220,7 +232,7 @@ namespace LinkedListTests
             list.Insert(3);
             list.Insert(1);
 
-            Exception e = Assert.Throws<System.Exception>(() => list.InsertBefore(4, 5));
+            Exception e = Assert.Throws<System.Exception>(() => list.InsertAfter(4, 5));
             string errorMessage = "That value does not exist.";
 
             Assert.Equal(errorMessage, e.Message);
