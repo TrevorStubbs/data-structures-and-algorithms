@@ -45,6 +45,25 @@ This Data Structure demonstrates how a linked list is constructed, iterated thro
 ## Whiteboard
 ![Whiteboard](assets/Day06LinkedLists.png)
 
+
+## Challenge 07
+### Unit Tests
+1. Where k is greater than the length of the linked list
+1. Where k and the length of the list are the same
+1. Where k is not a positive integer
+1. Where the linked list is of a size 1
+1. “Happy Path” where k is not at the end, but somewhere in the middle of the linked list
+
+## Approach & Efficiency
+- LinkedList.KthFromTheEnd() - Time O(n<sup>2</sup>), Space O(1)
+
+## API
+- LinkedList.KthFromTheEnd()
+
+
+## Whiteboard
+![Whiteboard](assets/Day07LinkedLists.png)
+
 ---
 
 

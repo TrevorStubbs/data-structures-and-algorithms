@@ -187,6 +187,49 @@ namespace LinkedListLibrary
         }
 
 
+        /// <summary>
+        /// Finds the the value of the node from kth spot from the end of the list.
+        /// It loops through once to find the number of items in the list. 
+        /// Subtracts the number of items from the list from k
+        /// Then loops through again to the kth spot and returns that value
+        /// </summary>
+        /// <param name="k">takes in an int for the position</param>
+        /// <returns>returns an integer from the node at the kth position</returns>
+        public int KthFromTheEnd(int k)
+        {
+            if (k < 0)
+            {
+                throw new Exception("You cannot enter a negative number.");
+            }
+
+            Node methodCurrent = Head;
+            if(methodCurrent == null)
+            {
+                throw new Exception("The list is empty.");
+            }
+
+            int counter = 0;
+            
+            while (methodCurrent != null)
+            {
+                methodCurrent = methodCurrent.Next;
+                counter++;
+            }
+
+            if (k > counter)
+            {
+                throw new Exception("There are not that many nodes in this list.");
+            }
+
+            int finalCounter = counter - k;
+            methodCurrent = Head;
+            for (int i = 0; i < finalCounter - 1; i++)
+            {
+                methodCurrent = methodCurrent.Next;
+            }
+            return methodCurrent.Value;
+            
+        }
 
     }
 }
