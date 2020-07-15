@@ -116,7 +116,7 @@ namespace LinkedListLibrary
                 return;
             }
 
-            if (Current.Value == value)
+            if (methodCurrent.Value == value)
             {
                 Insert(newValue);
                 return;
@@ -186,5 +186,45 @@ namespace LinkedListLibrary
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public int KthFromTheEnd(int k)
+        {
+            if (k < 0)
+            {
+                throw new Exception("You cannot enter a negative number.");
+            }
+
+            Node methodCurrent = Head;
+            if(methodCurrent == null)
+            {
+                throw new Exception("The list is empty.");
+            }
+
+            int counter = 0;
+            
+            while (methodCurrent != null)
+            {
+                methodCurrent = methodCurrent.Next;
+                counter++;
+            }
+
+            if (k > counter)
+            {
+                throw new Exception("There are not that many nodes in this list.");
+            }
+
+            int finalCounter = counter - k;
+            methodCurrent = Head;
+            for (int i = 0; i < finalCounter - 1; i++)
+            {
+                methodCurrent = methodCurrent.Next;
+            }
+            return methodCurrent.Value;
+            
+        }
     }
 }

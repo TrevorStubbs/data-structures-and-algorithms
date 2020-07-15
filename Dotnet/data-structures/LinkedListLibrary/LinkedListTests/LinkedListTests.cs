@@ -222,5 +222,55 @@ namespace LinkedListTests
 
             Assert.Equal(errorMessage, e.Message);
         }
+
+        [Fact]
+        public void CanFindKthValue1()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(8);
+            list.Insert(3);
+            list.Insert(1);
+
+            int outputFromMethod = list.KthFromTheEnd(0);
+
+            int expected = 2;
+
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void CanFindKthValue2()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(8);
+            list.Insert(3);
+            list.Insert(1);
+
+            int outputFromMethod = list.KthFromTheEnd(2);
+
+            int expected = 3;
+
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void CanFindKthValue3()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(8);
+            list.Insert(3);
+            list.Insert(1);
+
+            Exception e = Assert.Throws<System.Exception>(() => list.KthFromTheEnd(6));
+            string errorMessage = "There are not that many nodes in this list.";
+
+            Assert.Equal(errorMessage, e.Message);
+        }
     }
 }
