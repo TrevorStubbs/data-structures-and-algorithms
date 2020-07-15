@@ -4,7 +4,7 @@ using LinkedListLibrary;
 
 namespace LinkedListTests
 {
-    public class LinkedListTests
+    public class LinkedListTestsDay05
     {
         [Fact]
         public void CanInstantiateEmptyLinkedList()
@@ -86,7 +86,10 @@ namespace LinkedListTests
             string expected = "42 -> 23 -> 15 -> 12 -> 8 -> 4 -> Null";
             Assert.Equal(expected, outputFromMethod);
         }
+    }
 
+    public class LinkedListTestsDay06
+    {
         [Fact]
         public void CanReturnValuesInLinkedListsAfterUsingAppend()
         {
@@ -222,9 +225,27 @@ namespace LinkedListTests
 
             Assert.Equal(errorMessage, e.Message);
         }
+    }
+    public class LinkedListTestsDay7
+    { 
+        [Fact]
+        public void ReturnsExceptionWhenKIsLargerThanTheList()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(8);
+            list.Insert(3);
+            list.Insert(1);
+
+            Exception e = Assert.Throws<System.Exception>(() => list.KthFromTheEnd(6));
+            string errorMessage = "There are not that many nodes in this list.";
+
+            Assert.Equal(errorMessage, e.Message);
+        }
 
         [Fact]
-        public void CanFindKthValue1()
+        public void CanReturnValueAtTheEndOfTheList()
         {
             LinkedList list = new LinkedList();
 
@@ -241,7 +262,37 @@ namespace LinkedListTests
         }
 
         [Fact]
-        public void CanFindKthValue2()
+        public void ReturnsExceptionWhenKIsANegativeNumber()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(8);
+            list.Insert(3);
+            list.Insert(1);
+
+            Exception e = Assert.Throws<System.Exception>(() => list.KthFromTheEnd(-6));
+            string errorMessage = "You cannot enter a negative number.";
+
+            Assert.Equal(errorMessage, e.Message);
+        }
+
+        [Fact]
+        public void CanFindKthValueWhenListIsOne()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+
+            int outputFromMethod = list.KthFromTheEnd(0);
+
+            int expected = 2;
+
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
+        public void CanFindKthValueHappyPath()
         {
             LinkedList list = new LinkedList();
 
@@ -255,22 +306,6 @@ namespace LinkedListTests
             int expected = 3;
 
             Assert.Equal(expected, outputFromMethod);
-        }
-
-        [Fact]
-        public void CanFindKthValue3()
-        {
-            LinkedList list = new LinkedList();
-
-            list.Insert(2);
-            list.Insert(8);
-            list.Insert(3);
-            list.Insert(1);
-
-            Exception e = Assert.Throws<System.Exception>(() => list.KthFromTheEnd(6));
-            string errorMessage = "There are not that many nodes in this list.";
-
-            Assert.Equal(errorMessage, e.Message);
         }
     }
 }

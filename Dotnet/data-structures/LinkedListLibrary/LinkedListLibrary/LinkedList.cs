@@ -187,10 +187,13 @@ namespace LinkedListLibrary
         }
 
         /// <summary>
-        /// 
+        /// Finds the the value of the node from kth spot from the end of the list.
+        /// It loops through once to find the number of items in the list. 
+        /// Subtracts the number of items from the list from k
+        /// Then loops through again to the kth spot and returns that value
         /// </summary>
-        /// <param name="k"></param>
-        /// <returns></returns>
+        /// <param name="k">takes in an int for the position</param>
+        /// <returns>returns an integer from the node at the kth position</returns>
         public int KthFromTheEnd(int k)
         {
             if (k < 0)
