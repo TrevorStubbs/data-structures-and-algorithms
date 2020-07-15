@@ -180,7 +180,7 @@ namespace LinkedListLibrary
                 }
                 methodCurrent = methodCurrent.Next;
             }
-            if (methodCurrent.Next == null)
+            if (methodCurrent == null)
             {
                 throw new Exception("That value does not exist.");
             }

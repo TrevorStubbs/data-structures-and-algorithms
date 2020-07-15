@@ -4,7 +4,7 @@ using LinkedListLibrary;
 
 namespace LinkedListTests
 {
-    public class LinkedListTestsDay05
+    public class LinkedListCreatingInsertingFindingAValueTests
     {
         [Fact]
         public void CanInstantiateEmptyLinkedList()
@@ -88,7 +88,7 @@ namespace LinkedListTests
         }
     }
 
-    public class LinkedListTestsDay06
+    public class LinkedListAppendAddBeforeAddAfterTests
     {
         [Fact]
         public void CanAddANodeToTheEndOfALinkedList()
@@ -190,6 +190,23 @@ namespace LinkedListTests
         }
 
         [Fact]
+        public void CanInsertANodeInTheMiddleOfTheLinkedListV2()
+        {
+            LinkedList list = new LinkedList();
+
+            list.Insert(2);
+            list.Insert(2);
+            list.Insert(1);
+
+            list.InsertAfter(2, 5);
+
+            string outputFromMethod = list.ToString();
+
+            string expected = "1 -> 2 -> 5 -> 2 -> Null";
+            Assert.Equal(expected, outputFromMethod);
+        }
+
+        [Fact]
         public void CanInsertANodeAfterTheLastNodeOfTheLinkedList()
         {
             LinkedList list = new LinkedList();
@@ -203,23 +220,6 @@ namespace LinkedListTests
             string outputFromMethod = list.ToString();
 
             string expected = "1 -> 3 -> 2 -> 5 -> Null";
-            Assert.Equal(expected, outputFromMethod);
-        }
-
-        [Fact]
-        public void CanAddAfter3()
-        {
-            LinkedList list = new LinkedList();
-
-            list.Insert(2);
-            list.Insert(2);
-            list.Insert(1);
-
-            list.InsertAfter(2, 5);
-
-            string outputFromMethod = list.ToString();
-
-            string expected = "1 -> 2 -> 5 -> 2 -> Null";
             Assert.Equal(expected, outputFromMethod);
         }
 
@@ -238,7 +238,7 @@ namespace LinkedListTests
             Assert.Equal(errorMessage, e.Message);
         }
     }
-    public class LinkedListTestsDay7
+    public class LinkedListTestsFindTheKthNodeTests
     { 
         [Fact]
         public void ReturnsExceptionWhenKIsLargerThanTheList()
