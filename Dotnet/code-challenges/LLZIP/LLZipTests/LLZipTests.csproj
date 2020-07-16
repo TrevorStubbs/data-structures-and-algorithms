@@ -17,4 +17,10 @@
     <ProjectReference Include="..\LLZIP\LLZIP.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="LinkedListLibrary">
+      <HintPath>..\..\..\data-structures\LinkedListLibrary\LinkedListLibrary\bin\Debug\netcoreapp3.1\LinkedListLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
