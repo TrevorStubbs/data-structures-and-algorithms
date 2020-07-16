@@ -37,6 +37,9 @@ The 2 lists will become 1 where the nodes of each list is alternating in the new
 ---
 
 ### Change Log
+- 1.3 Comments and README
+- 1.2 Challenge complete
+- 1.1 Challenge outline
 - 1.0 Repo Setup 
 
 ---
