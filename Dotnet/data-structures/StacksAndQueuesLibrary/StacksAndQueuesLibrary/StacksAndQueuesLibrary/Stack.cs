@@ -6,7 +6,7 @@ namespace StacksAndQueuesLibrary
 {
     public class Stack
     {
-        public Node Top { get; set; }
+        private Node Top { get; set; }
 
         /// <summary>
         /// Puts a new node on top of the stack

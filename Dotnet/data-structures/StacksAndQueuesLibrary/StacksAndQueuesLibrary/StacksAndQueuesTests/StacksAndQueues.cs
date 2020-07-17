@@ -17,8 +17,8 @@ namespace StacksAndQueuesTests
             // Act
             stack.Push("candy cane");
             // Assert
-            Assert.Equal("candy cane", stack.Top.Value);
-            Assert.NotNull(stack.Top.Value);
+            Assert.Equal("candy cane", stack.Peek());
+            Assert.NotNull(stack.Peek());
         }
 
         /// <summary>
@@ -29,15 +29,15 @@ namespace StacksAndQueuesTests
         {
             // Arrange
             Stack stack = new Stack();
-            string expected = "chocolate candy cane";
+            string expected = "chocolate";
             // Act
             stack.Push("candy cane");
             stack.Push("chocolate");
             // Assert
-            string returnFromMethod = $"{stack.Top.Value} {stack.Top.Next.Value}";
+            string returnFromMethod = $"{stack.Peek()}";
 
             Assert.Equal(expected, returnFromMethod);
-            Assert.NotNull(stack.Top.Value);
+            Assert.NotNull(stack.Peek());
         }
 
         /// <summary>
@@ -70,8 +70,10 @@ namespace StacksAndQueuesTests
             stack.Push("chocolate");
             stack.Pop();
             stack.Pop();
+            Exception e = Assert.Throws<System.Exception>(() => stack.Peek());
+            string errorMessage = "The stack is empty.";
             // Assert
-            Assert.Null(stack.Top);
+            Assert.Equal(errorMessage, e.Message);
         }
 
         /// <summary>
@@ -97,7 +99,9 @@ namespace StacksAndQueuesTests
         public void CanInstantiateAnEmptyStack()
         {
             Stack stack = new Stack();
-            Assert.Null(stack.Top);
+            Exception e = Assert.Throws<System.Exception>(() => stack.Peek());
+            string errorMessage = "The stack is empty.";          
+            Assert.Equal(errorMessage, e.Message);
         }
 
         /// <summary>
