@@ -78,16 +78,16 @@ namespace StacksAndQueuesTests
         /// Test 5
         /// </summary>
         [Fact]
-        public void PeekWillReturnTrueIfStackIsNotEmpty()
+        public void PeekWillReturnTheValueOfTopIfStackIsNotEmpty()
         {
             // Arrange
             Stack stack = new Stack();
             // Act
             stack.Push("candy cane");
             stack.Push("chocolate");
-            bool returnFromMethod = stack.Peek();
+            string returnFromMethod = stack.Peek();
             // Assert
-            Assert.True(returnFromMethod);
+            Assert.Equal("chocolate", returnFromMethod);
         }
 
         /// <summary>

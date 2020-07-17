@@ -20,17 +20,29 @@ namespace StacksAndQueuesLibrary
         }
 
         /// <summary>
-        /// Look at the top node of the stack. If it's not null return true. If null throw an error.
+        /// Call IsEmpty. If it's false return the value of front else throw an error.
         /// </summary>
-        /// <returns>Returns true or throws and error</returns>
-        public bool Peek()
+        /// <returns>Returns the value of top or throws and error</returns>
+        public string Peek()
         {
-            if (Top == null)
+            if (IsEmpty())
             {
                 throw new Exception("The stack is empty.");
             }
             else
-                return true;
+                return Top.Value;
+        }
+
+        /// <summary>
+        /// Look at the top node of the stack. Return true if it's empty else return false.
+        /// </summary>
+        /// <returns>True or false</returns>
+        public bool IsEmpty()
+        {
+            if (Top == null)            
+                return true;            
+            else
+                return false;
         }
 
         /// <summary>
@@ -40,10 +52,11 @@ namespace StacksAndQueuesLibrary
         public Node Pop()
         {
 
-            if (Peek())
+            if (!IsEmpty())
             {
                 Node temp = Top;
                 Top = Top.Next;
+                temp.Next = null;
                 return temp;
             }
             else
