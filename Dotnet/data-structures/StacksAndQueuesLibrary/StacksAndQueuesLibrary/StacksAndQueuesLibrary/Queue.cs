@@ -9,11 +9,18 @@ namespace StacksAndQueuesLibrary
         private Node Front { get; set; }
         private Node Rear { get; set; }
 
+        /// <summary>
+        /// Class constructor makes sure that Rear and Front are the same thing.
+        /// </summary>
         public Queue()
         {
             Rear = Front;
         }
 
+        /// <summary>
+        /// Take in a value for building a node and inserts it in the last position of the queue.
+        /// </summary>
+        /// <param name="value">Takes a string to build the node</param>
         public void Enqueue(string value)
         {
             Node newNode = new Node(value);
@@ -56,6 +63,10 @@ namespace StacksAndQueuesLibrary
                 return false;
         }
 
+        /// <summary>
+        /// If the queue is not empty it takes the Front node off the queue and returns it to the caller.
+        /// </summary>
+        /// <returns>Returns a Node</returns>
         public Node Dequeue()
         {
             if (!IsEmpty())

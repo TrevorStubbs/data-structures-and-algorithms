@@ -204,5 +204,56 @@ namespace StacksAndQueuesTests
             // Assert
             Assert.Equal(expected, returnFromMethod);
         }
+
+        /// <summary>
+        /// Test 12
+        /// </summary>
+        [Fact]
+        public void CanSuccessfullyEmptyAQueueAfterMultipleDequeues()
+        {
+            Queue queue = new Queue();
+            
+            queue.Enqueue("Josie Cat");
+            queue.Enqueue("Belle Kitty");
+            queue.Enqueue("Razzle");
+            queue.Dequeue();
+            queue.Dequeue();
+            queue.Dequeue();
+
+            Exception e = Assert.Throws<System.Exception>(() => queue.Peek());
+            string errorMessage = "The queue is empty.";
+           
+            Assert.Equal(errorMessage, e.Message);
+        }
+
+        /// <summary>
+        /// Test 13
+        /// </summary>
+        [Fact]
+        public void CanSuccessfullyInstantiateAnEmptyPueue()
+        {
+            Queue queue = new Queue();            
+
+            Exception e = Assert.Throws<System.Exception>(() => queue.Peek());
+            string errorMessage = "The queue is empty.";
+
+            Assert.Equal(errorMessage, e.Message);
+        }
+
+        /// <summary>
+        /// Test 14
+        /// </summary>
+        [Fact]
+        public void CallingDequeueOnEmptyQueueRaisesException()
+        {
+            Queue queue = new Queue();
+
+            Exception e = Assert.Throws<System.Exception>(() => queue.Dequeue());
+            string errorMessage = "The queue is empty.";
+
+            Assert.Equal(errorMessage, e.Message);
+        }
+
+
     }
 }
