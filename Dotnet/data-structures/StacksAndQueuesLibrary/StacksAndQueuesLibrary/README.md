@@ -21,11 +21,17 @@ This Data Structure demonstrates how a Stack and a Queue are constructed.
 - Stack.Push() Time: O(1) | Space: O(1)
 - Stack.Peek() Time: O(1) | Space: O(1)
 - Stack.Pop() Time: O(1) | Space: O(1)
+- Queue.Enqueue() Time: O(1) | Space: O(1)
+- Queue.Peek() Time: O(1) | Space: O(1)
+- Queue.Dequeue() Time: O(1) | Space: O(1)
 
 
 ## API
 - Stack.Push()
 - Stack.Peek()
 - Stack.Pop()
+- Queue.Enqueue()
+- Queue.Peek()
+- Queue.Dequeue()
 
 ---
