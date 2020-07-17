@@ -4,7 +4,7 @@ using StacksAndQueuesLibrary;
 
 namespace StacksAndQueuesTests
 {
-    public class StackTests
+    public class StackDay1Tests
     {
         /// <summary>
         /// Test 1
@@ -38,6 +38,40 @@ namespace StacksAndQueuesTests
 
             Assert.Equal(expected, returnFromMethod);
             Assert.NotNull(stack.Top.Value);
+        }
+
+        /// <summary>
+        /// Test 3
+        /// </summary>
+        [Fact]
+        public void CanPopNodeOffTheStack()
+        {
+            // Arrange
+            Stack stack = new Stack();
+            string expected = "chocolate";
+            // Act
+            stack.Push("candy cane");
+            stack.Push("chocolate");
+            Node returnFromMethod = stack.Pop();
+            // Assert
+            Assert.Equal(expected, returnFromMethod.Value);
+        }
+
+        /// <summary>
+        /// Test 4
+        /// </summary>
+        [Fact]
+        public void CanEmptyStackByPoppingMultipuleTimes()
+        {
+            // Arrange
+            Stack stack = new Stack();
+            // Act
+            stack.Push("candy cane");
+            stack.Push("chocolate");
+            stack.Pop();
+            stack.Pop();
+            // Assert
+            Assert.Null(stack.Top);
         }
 
         /// <summary>
@@ -76,6 +110,20 @@ namespace StacksAndQueuesTests
             Stack stack = new Stack();
             // Act
             Exception e = Assert.Throws<System.Exception>(() => stack.Peek());
+            string errorMessage = "The stack is empty.";
+            // Assert
+            Assert.Equal(errorMessage, e.Message);
+        }
+
+        /// <summary>
+        /// Test 7. Part 2
+        /// </summary>
+        [Fact]
+        public void PopAnEmptyStackWillTrowAnError()
+        {
+            Stack stack = new Stack();
+            // Act
+            Exception e = Assert.Throws<System.Exception>(() => stack.Pop());
             string errorMessage = "The stack is empty.";
             // Assert
             Assert.Equal(errorMessage, e.Message);
