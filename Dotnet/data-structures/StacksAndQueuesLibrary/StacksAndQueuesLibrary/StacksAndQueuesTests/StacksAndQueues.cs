@@ -133,4 +133,76 @@ namespace StacksAndQueuesTests
             Assert.Equal(errorMessage, e.Message);
         }
     }
+
+    public class QueueDay1Tests
+    {
+        /// <summary>
+        /// Test 8
+        /// </summary>
+        [Fact]
+        public void CanEnqueueIntoQueue()
+        {
+            // Arrange
+            Queue queue = new Queue();
+            // Act
+            queue.Enqueue("Josie Cat");
+
+            // Assert
+            Assert.Equal("Josie Cat", queue.Peek());
+        }
+
+        /// <summary>
+        /// Test 9
+        /// </summary>
+        [Fact]
+        public void CanSuccessfullyEnqueueMultipleValuesIntoAQueue()
+        {
+            // Arrange
+            Queue queue = new Queue();
+            // Act
+            queue.Enqueue("Josie Cat");
+            queue.Enqueue("Belle Kitty");
+
+            // Assert
+            Assert.Equal("Josie Cat", queue.Peek());
+        }
+
+        /// <summary>
+        /// Test 10
+        /// </summary>
+        [Fact]
+        public void CanSuccessfullyDequeueOutOfAQueueTheExpectedValue()
+        {
+            //Arrange
+            Queue queue = new Queue();
+            string expected = "Josie Cat";
+            // Act
+            queue.Enqueue("Josie Cat");
+            queue.Enqueue("Belle Kitty");
+            queue.Enqueue("Razzle");
+            Node returnFromMethod = queue.Dequeue();
+
+            // Assert
+            Assert.Equal(expected, returnFromMethod.Value);
+        }
+
+        /// <summary>
+        /// Test 11
+        /// </summary>
+        [Fact]
+        public void CanSuccessfullyPeekIntoAQueueSeeingTheExpectedValue()
+        {
+            //Arrange
+            Queue queue = new Queue();
+            string expected = "Josie Cat";
+            // Act
+            queue.Enqueue("Josie Cat");
+            queue.Enqueue("Belle Kitty");
+            queue.Enqueue("Razzle");
+            string returnFromMethod = queue.Peek();
+
+            // Assert
+            Assert.Equal(expected, returnFromMethod);
+        }
+    }
 }

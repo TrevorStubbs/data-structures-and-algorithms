@@ -20,7 +20,7 @@ namespace StacksAndQueuesLibrary
         }
 
         /// <summary>
-        /// Call IsEmpty. If it's false return the value of front else throw an error.
+        /// Call IsEmpty. If it's false return the value of Top else throw an error.
         /// </summary>
         /// <returns>Returns the value of top or throws and error</returns>
         public string Peek()
