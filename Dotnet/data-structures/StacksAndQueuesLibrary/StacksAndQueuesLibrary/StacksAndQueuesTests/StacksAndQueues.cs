@@ -13,7 +13,7 @@ namespace StacksAndQueuesTests
         public void CanPushOnStack()
         {
             // Arrange
-            Stack stack = new Stack();
+            Stack<string> stack = new Stack<string>();
             // Act
             stack.Push("candy cane");
             // Assert
@@ -28,7 +28,7 @@ namespace StacksAndQueuesTests
         public void CanPushMultipuleNodesOnTheStack()
         {
             // Arrange
-            Stack stack = new Stack();
+            Stack<string> stack = new Stack<string>();
             string expected = "chocolate";
             // Act
             stack.Push("candy cane");
@@ -47,12 +47,12 @@ namespace StacksAndQueuesTests
         public void CanPopNodeOffTheStack()
         {
             // Arrange
-            Stack stack = new Stack();
+            Stack<string> stack = new Stack<string>();
             string expected = "chocolate";
             // Act
             stack.Push("candy cane");
             stack.Push("chocolate");
-            Node returnFromMethod = stack.Pop();
+            Node<string> returnFromMethod = stack.Pop();
             // Assert
             Assert.Equal(expected, returnFromMethod.Value);
         }
@@ -64,7 +64,7 @@ namespace StacksAndQueuesTests
         public void CanEmptyStackByPoppingMultipuleTimes()
         {
             // Arrange
-            Stack stack = new Stack();
+            Stack<string> stack = new Stack<string>();
             // Act
             stack.Push("candy cane");
             stack.Push("chocolate");
@@ -83,7 +83,7 @@ namespace StacksAndQueuesTests
         public void PeekWillReturnTheValueOfTopIfStackIsNotEmpty()
         {
             // Arrange
-            Stack stack = new Stack();
+            Stack<string> stack = new Stack<string>();
             // Act
             stack.Push("candy cane");
             stack.Push("chocolate");
@@ -98,7 +98,7 @@ namespace StacksAndQueuesTests
         [Fact]
         public void CanInstantiateAnEmptyStack()
         {
-            Stack stack = new Stack();
+            Stack<string> stack = new Stack<string>();
             Exception e = Assert.Throws<System.Exception>(() => stack.Peek());
             string errorMessage = "The stack is empty.";          
             Assert.Equal(errorMessage, e.Message);
@@ -111,7 +111,7 @@ namespace StacksAndQueuesTests
         public void PeekWillThrowAnExceptionIfStackIsEmpty()
         {
             // Arrange
-            Stack stack = new Stack();
+            Stack<string> stack = new Stack<string>();
             // Act
             Exception e = Assert.Throws<System.Exception>(() => stack.Peek());
             string errorMessage = "The stack is empty.";
@@ -125,7 +125,7 @@ namespace StacksAndQueuesTests
         [Fact]
         public void PopAnEmptyStackWillTrowAnError()
         {
-            Stack stack = new Stack();
+            Stack<string> stack = new Stack<string>();
             // Act
             Exception e = Assert.Throws<System.Exception>(() => stack.Pop());
             string errorMessage = "The stack is empty.";
@@ -143,7 +143,7 @@ namespace StacksAndQueuesTests
         public void CanEnqueueIntoQueue()
         {
             // Arrange
-            Queue queue = new Queue();
+            Queue<string> queue = new Queue<string>();
             // Act
             queue.Enqueue("Josie Cat");
 
@@ -158,7 +158,7 @@ namespace StacksAndQueuesTests
         public void CanSuccessfullyEnqueueMultipleValuesIntoAQueue()
         {
             // Arrange
-            Queue queue = new Queue();
+            Queue<string> queue = new Queue<string>();
             // Act
             queue.Enqueue("Josie Cat");
             queue.Enqueue("Belle Kitty");
@@ -174,13 +174,13 @@ namespace StacksAndQueuesTests
         public void CanSuccessfullyDequeueOutOfAQueueTheExpectedValue()
         {
             //Arrange
-            Queue queue = new Queue();
+            Queue<string> queue = new Queue<string>();
             string expected = "Josie Cat";
             // Act
             queue.Enqueue("Josie Cat");
             queue.Enqueue("Belle Kitty");
             queue.Enqueue("Razzle");
-            Node returnFromMethod = queue.Dequeue();
+            Node<string> returnFromMethod = queue.Dequeue();
 
             // Assert
             Assert.Equal(expected, returnFromMethod.Value);
@@ -193,7 +193,7 @@ namespace StacksAndQueuesTests
         public void CanSuccessfullyPeekIntoAQueueSeeingTheExpectedValue()
         {
             //Arrange
-            Queue queue = new Queue();
+            Queue<string> queue = new Queue<string>();
             string expected = "Josie Cat";
             // Act
             queue.Enqueue("Josie Cat");
@@ -211,7 +211,7 @@ namespace StacksAndQueuesTests
         [Fact]
         public void CanSuccessfullyEmptyAQueueAfterMultipleDequeues()
         {
-            Queue queue = new Queue();
+            Queue<string> queue = new Queue<string>();
             
             queue.Enqueue("Josie Cat");
             queue.Enqueue("Belle Kitty");
@@ -232,7 +232,7 @@ namespace StacksAndQueuesTests
         [Fact]
         public void CanSuccessfullyInstantiateAnEmptyPueue()
         {
-            Queue queue = new Queue();            
+            Queue<string> queue = new Queue<string>();            
 
             Exception e = Assert.Throws<System.Exception>(() => queue.Peek());
             string errorMessage = "The queue is empty.";
@@ -246,7 +246,7 @@ namespace StacksAndQueuesTests
         [Fact]
         public void CallingDequeueOnEmptyQueueRaisesException()
         {
-            Queue queue = new Queue();
+            Queue<string> queue = new Queue<string>();
 
             Exception e = Assert.Throws<System.Exception>(() => queue.Dequeue());
             string errorMessage = "The queue is empty.";

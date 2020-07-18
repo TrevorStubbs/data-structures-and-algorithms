@@ -4,10 +4,10 @@ using System.Text;
 
 namespace StacksAndQueuesLibrary
 {
-    public class Queue
+    public class Queue<T>
     {
-        private Node Front { get; set; }
-        private Node Rear { get; set; }
+        private Node<T> Front { get; set; }
+        private Node<T> Rear { get; set; }
 
         /// <summary>
         /// Class constructor makes sure that Rear and Front are the same thing.
@@ -20,10 +20,10 @@ namespace StacksAndQueuesLibrary
         /// <summary>
         /// Take in a value for building a node and inserts it in the last position of the queue.
         /// </summary>
-        /// <param name="value">Takes a string to build the node</param>
-        public void Enqueue(string value)
+        /// <param name="value">Takes a value to build the node</param>
+        public void Enqueue(T value)
         {
-            Node newNode = new Node(value);
+            Node<T> newNode = new Node<T>(value);
 
             if (Front == null)
             {
@@ -41,7 +41,7 @@ namespace StacksAndQueuesLibrary
         /// Call IsEmpty. If it's false return the value of Front else throw an error.
         /// </summary>
         /// <returns>Returns the value of Front or throws and error</returns>
-        public string Peek()
+        public T Peek()
         {
             if (IsEmpty())
             {
@@ -67,11 +67,11 @@ namespace StacksAndQueuesLibrary
         /// If the queue is not empty it takes the Front node off the queue and returns it to the caller.
         /// </summary>
         /// <returns>Returns a Node</returns>
-        public Node Dequeue()
+        public Node<T> Dequeue()
         {
             if (!IsEmpty())
             {
-                Node temp = Front;
+                Node<T> temp = Front;
                 Front = Front.Next;
                 temp.Next = null;
                 return temp;
