@@ -4,7 +4,8 @@
 ---
 
 ### Problem Domain
-Write a `PseudoQueue` class that uses 2 stacks to implement a standard queue interface. Have `Enqueue(value)` and `Dequeue()` methods.
+Write a `PseudoQueue` class that uses 2 stacks to implement a standard queue interface. 
+Have `Enqueue(value)` and `Dequeue()` methods.
 
 ---
 
