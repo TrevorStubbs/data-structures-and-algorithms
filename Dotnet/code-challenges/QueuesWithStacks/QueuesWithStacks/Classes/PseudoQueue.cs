@@ -13,17 +13,7 @@ namespace QueuesWithStacks.Classes
         Node<T> Rear { get; set; }
 
         /// <summary>
-        /// A constructor so that everything is pointing to the same place in memory
-        /// </summary>
-        public PseudoQueue()
-        {
-            Storage.Top = Temp.Top;
-            Front = Storage.Top;
-            Rear = Storage.Top;
-        }
-
-        /// <summary>
-        /// Checks to see if the stack is empty. If it is then a push the new node onto the stack and point everthing to it.
+        /// Checks to see if the stack is empty. If it is then a push the new node onto the stack and point everything to it.
         /// If the stack has something in it then push the new node onto the stack and only point the rear to that node.
         /// </summary>
         /// <param name="value">Takes the value of the new node</param>
