@@ -17,4 +17,10 @@
     <ProjectReference Include="..\QueuesWithStacks\QueuesWithStacks.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="StacksAndQueuesLibrary">
+      <HintPath>..\..\..\data-structures\StacksAndQueuesLibrary\StacksAndQueuesLibrary\StacksAndQueuesLibrary\bin\Debug\netcoreapp3.1\StacksAndQueuesLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
