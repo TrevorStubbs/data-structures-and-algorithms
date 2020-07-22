@@ -5,6 +5,7 @@
 - [Array Shift](code-challenges/ArrayShift/README.md)
 - [Linked Lists Zip](code-challenges/LLZIP/README.md)
 - [Stacks With Queues](code-challenges/QueuesWithStacks/README.md)
+- [FIFO Animal Shelter](code-challenges/FIFOAnimalShelter/README.md)
 
 ### Data Structures
 - [Linked Lists](data-structures/LinkedListLibrary/README.md)
