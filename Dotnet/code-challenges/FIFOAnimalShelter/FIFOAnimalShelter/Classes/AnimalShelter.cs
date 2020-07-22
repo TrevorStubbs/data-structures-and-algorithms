@@ -19,7 +19,7 @@ namespace FIFOAnimalShelter.Classes
         }
 
         /// <summary>
-        /// Goes through the queue to find the first instance of that type of animal.
+        /// Goes through the queue to find the first instance of the preferred type of animal.
         /// </summary>
         /// <param name="perf">Takes in a string of either "cat" or "dog"</param>
         /// <returns>Returns either null or the first cat or dog</returns>
