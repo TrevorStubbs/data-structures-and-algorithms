@@ -1,8 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="StacksAndQueuesLibrary">
+      <HintPath>..\..\..\data-structures\StacksAndQueuesLibrary\StacksAndQueuesLibrary\StacksAndQueuesLibrary\bin\Debug\netcoreapp3.1\StacksAndQueuesLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+
 
 </Project>

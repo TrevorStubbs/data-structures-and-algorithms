@@ -6,7 +6,7 @@ namespace StacksAndQueuesLibrary
 {
     public class Queue<T>
     {
-        private Node<T> Front { get; set; }
+        public Node<T> Front { get; set; }
         private Node<T> Rear { get; set; }
 
         /// <summary>

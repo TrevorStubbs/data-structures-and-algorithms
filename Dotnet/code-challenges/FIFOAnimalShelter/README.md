@@ -37,7 +37,7 @@
 
 | Time | Space |
 | :----------- | :----------- |
-| O(n) | O(n) |
+| O(n) | O(1) |
 
 ---
 
@@ -49,6 +49,10 @@
 ---
 
 ### Change Log
+- 1.4: README and Summary Comments
+- 1.3: Tests
+- 1.2: Dequeue(perf) Finished
+- 1.1: Enqueue(Animal) Finished
 - 1.0: Repo Setup 
 
 ---
