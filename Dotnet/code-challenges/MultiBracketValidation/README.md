@@ -46,7 +46,10 @@ Your function should take a string as its only argument, and should return a boo
 ---
 
 ### Change Log
-- 1.0 Repo Setup 
+- 1.3: README and Summary Comments
+- 1.2: Tests ran
+- 1.1: Method Made
+- 1.0: Repo Setup 
 
 ---
 
