@@ -13,15 +13,16 @@
 
 ### Inputs and Expected Outputs (Enqueue(animal)
 
-| Input1 | Arguments | Internal State |
-| :----------- | :----------- | :----------- |
+Interal State(Before) | Input1 | Internal State(After) |
+| :--- | :----------- | :----------- |
+| [Dog Object, Cat Object, Cat Object] | Dog Object | [Dog Object, Dog Object, Cat Object, Cat Object]
 
 
 ### Inputs and Expected Outputs (Dequeue(perf))
 
-| Input | Output| Internal State
+| Input | Output|
 --- | --- | ---
-
+"cat" or "dog" | Cat Object or Dog Object
 
 
 ---
