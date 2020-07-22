@@ -66,7 +66,7 @@ namespace FIFOAnimalShelter
             Cat emptyCat = new Cat();
             Dog emptyDog = new Dog();
 
-            Animal animal = shelter.Dequeue(emptyDog);
+            Animal animal = shelter.Dequeue("dog");
 
             Console.WriteLine(animal.Name);
         }

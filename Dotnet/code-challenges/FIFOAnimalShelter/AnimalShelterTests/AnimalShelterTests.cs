@@ -58,7 +58,7 @@ namespace AnimalShelterTests
             // Arrange
             AnimalShelter shelter = new AnimalShelter();
             Dog[] dogs = new Dog[4];
-            Dog testDog = new Dog();
+            //Dog testDog = new Dog();
 
             int counter = 1;
             foreach (Dog item in dogs)
@@ -67,7 +67,7 @@ namespace AnimalShelterTests
             }
 
             // Act
-            Animal testNode = shelter.Dequeue(testDog);
+            Animal testNode = shelter.Dequeue("dog");
             string returnFromMethod = testNode.Name;
             string expected = "1";
             // Assert
@@ -79,7 +79,6 @@ namespace AnimalShelterTests
         {
             // Arrange
             AnimalShelter shelter = new AnimalShelter();
-            Dog testDog = new Dog();
 
             for (int i = 0; i < 8; i++)
             {
@@ -90,7 +89,7 @@ namespace AnimalShelterTests
             }
 
             // Act
-            Animal testNode = shelter.Dequeue(testDog);
+            Animal testNode = shelter.Dequeue("dog");
             var expected = new Dog();
             // Assert
 
@@ -111,7 +110,7 @@ namespace AnimalShelterTests
                 shelter.Enqueue(new Dog() { Name = $"{counter++}" });
             }
 
-            Assert.Null(shelter.Dequeue(testCat));
+            Assert.Null(shelter.Dequeue("Cat"));
         }
     }
 }
