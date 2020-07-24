@@ -12,3 +12,4 @@
     - Data Structures
         - [Linked Lists](Dotnet/data-structures/LinkedListLibrary/README.md)
         - [Stacks And Queues](Dotnet/data-structures/StacksAndQueuesLibrary/StacksAndQueuesLibrary/README.md)
+        - [Trees and Binary Search Trees](Dotnet/data-structures/TreesLibrary/README.md)

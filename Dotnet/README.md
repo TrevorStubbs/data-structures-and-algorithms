@@ -11,3 +11,4 @@
 ### Data Structures
 - [Linked Lists](data-structures/LinkedListLibrary/README.md)
 - [Stacks And Queues](data-structures/StacksAndQueuesLibrary/StacksAndQueuesLibrary/README.md)
+- [Trees and Binary Search Trees](data-structures/TreesLibrary/README.md)
