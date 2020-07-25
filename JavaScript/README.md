@@ -1,1 +1,14 @@
 # JavaScript -
+- 2DArrays
+- Chaining Methods
+- Filter
+- for-each
+- includes
+- JavaScriptSort
+- mapJs
+- object keys values entries
+- reduce
+- Regex Part1
+- Regex Part2
+- split-join-slice-splice
+- value-vs-reference

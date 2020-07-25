@@ -1,8 +1,7 @@
 # Data Structures and Algorithms
 ## Table of Contents
-
-- [JavaScript](JavaScript/README.md)
-- [Dotnet](Dotnet/README.md)
+##### Author: Trevor Stubbs
+- Dotnet
     - Code Challenges
         - [Array Shift](Dotnet/code-challenges/ArrayShift/README.md)
         - [Linked Lists Zip](Dotnet/code-challenges/LLZIP/README.md)
@@ -13,3 +12,20 @@
         - [Linked Lists](Dotnet/data-structures/LinkedListLibrary/README.md)
         - [Stacks And Queues](Dotnet/data-structures/StacksAndQueuesLibrary/StacksAndQueuesLibrary/README.md)
         - [Trees and Binary Search Trees](Dotnet/data-structures/TreesLibrary/README.md)
+- JavaScript
+    - Code Challenges
+      - 2DArrays
+      - Chaining Methods
+      - Filter
+      - for-each
+      - includes
+      - JavaScriptSort
+      - mapJs
+      - object keys values entries
+      - reduce
+      - Regex Part1
+      - Regex Part2
+      - split-join-slice-splice
+      - value-vs-reference
+- Interview Problems
+  - [Eeny Meeny Miny Moe](interview-problems/EenyMeenyMinyMoeInterviewQuestion/README.md)
