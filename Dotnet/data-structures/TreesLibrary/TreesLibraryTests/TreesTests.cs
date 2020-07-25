@@ -121,10 +121,10 @@ namespace TreesLibraryTests
 
             // Act
 
-            List<int> preOrder = tree.InOrder(tree.Root);
+            List<int> inOrder = tree.InOrder(tree.Root);
 
             // Assert
-            Assert.Equal(order, preOrder);
+            Assert.Equal(order, inOrder);
         }
 
         [Fact]
@@ -160,11 +160,132 @@ namespace TreesLibraryTests
 
             // Act
 
-            List<int> preOrder = tree.PostOrder(tree.Root);
+            List<int> postOrder = tree.PostOrder(tree.Root);
 
             // Assert
-            Assert.Equal(order, preOrder);
+            Assert.Equal(order, postOrder);
         }
 
+    }
+
+    public class BinarySearchTreeTests
+    {
+        [Fact]
+        public void CanInsertOneItemIntoTheBST()
+        {
+            BindarySearchTree bst = new BindarySearchTree();
+
+            bst.Add(50);
+
+            List<int> order = new List<int>()
+            {
+                50
+            };
+
+            List<int> items = bst.InOrder(bst.Root);
+
+            Assert.Equal(order, items);
+        }
+
+        [Fact]
+        public void CanInsertManyItemsIntoTheBST()
+        {
+            BindarySearchTree bst = new BindarySearchTree();
+
+            bst.Add(50);
+            bst.Add(75);
+            bst.Add(25);
+
+            List<int> order = new List<int>()
+            {
+                25,50,75
+            };
+
+            List<int> items = bst.InOrder(bst.Root);
+
+            Assert.Equal(order, items);
+        }
+
+        [Fact]
+        public void CanInsertManyManyItemsIntoTheBST()
+        {
+            BindarySearchTree bst = new BindarySearchTree();
+
+            bst.Add(50);
+            bst.Add(60);
+            bst.Add(75);
+            bst.Add(20);
+            bst.Add(25);
+            bst.Add(23);
+            bst.Add(21);
+            bst.Add(22);
+
+            List<int> order = new List<int>()
+            {
+                20,21,22,23,25,50,60,75
+            };
+
+            List<int> items = bst.InOrder(bst.Root);
+
+            Assert.Equal(order, items);
+        }
+
+        [Fact]
+        public void ReturnsTrueWhenTheRootIsSearched()
+        {
+            BindarySearchTree bst = new BindarySearchTree();
+
+            bst.Add(50);
+            bst.Add(60);
+            bst.Add(75);
+            bst.Add(20);
+            bst.Add(25);
+            bst.Add(23);
+            bst.Add(21);
+            bst.Add(22);
+
+            Assert.True(bst.Contains(50));
+        }
+
+        [Fact]
+        public void ReturnsTrueWhenAValidNumberIsSearched()
+        {
+            BindarySearchTree bst = new BindarySearchTree();
+
+            bst.Add(50);
+            bst.Add(60);
+            bst.Add(75);
+            bst.Add(20);
+            bst.Add(25);
+            bst.Add(23);
+            bst.Add(21);
+            bst.Add(22);
+
+            Assert.True(bst.Contains(50));
+            Assert.True(bst.Contains(60));
+            Assert.True(bst.Contains(75));
+            Assert.True(bst.Contains(20));
+            Assert.True(bst.Contains(25));
+            Assert.True(bst.Contains(23));
+            Assert.True(bst.Contains(21));
+            Assert.True(bst.Contains(22));
+        }
+
+        [Fact]
+        public void ReturnsFalseWhenAnInvalidNumberIsSearched()
+        {
+            BindarySearchTree bst = new BindarySearchTree();
+
+            bst.Add(50);
+            bst.Add(60);
+            bst.Add(75);
+            bst.Add(20);
+            bst.Add(25);
+            bst.Add(23);
+            bst.Add(21);
+            bst.Add(22);
+
+            Assert.False(bst.Contains(81));
+        }
     }
 }

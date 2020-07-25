@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace TreesLibrary
@@ -111,6 +112,84 @@ namespace TreesLibrary
 
             traversal.Add(root.Value);
         }
+
+        /// <summary>
+        /// The main method for adding a number to the BST
+        /// </summary>
+        /// <param name="value">Takes an integer to build the node</param>
+        public void Add(int value)
+        {
+            Root = Add(Root, value);
+        }
+
+        /// <summary>
+        /// Helper method for the add method. Does all the recursion.
+        /// Compaires the value to the root and either moves left or right. 
+        /// When a leaf is found the value is place in its proper place.
+        /// </summary>
+        /// <param name="root">The current root node</param>
+        /// <param name="value">Takes an integer to build the node</param>
+        /// <returns>Returns the current root node</returns>
+        public Node<int> Add(Node<int> root, int value)
+        {
+            if (root == null)
+            {
+                root = new Node<int>(value);
+                return root;
+            }
+
+            if (value < root.Value)
+                root.LeftChild = Add(root.LeftChild, value);
+            else if (value > root.Value)
+                root.RightChild = Add(root.RightChild, value);
+
+            return root;
+        }
+
+        /// <summary>
+        /// Method to check if the entered value is in the tree
+        /// </summary>
+        /// <param name="value">An integer for the value</param>
+        /// <returns>Returns a boolean</returns>
+        public bool Contains(int value)
+        {
+            if (Root == null)
+                return false;
+            else
+                return Contains(Root, value);
+        }
+
+        /// <summary>
+        /// The helper method for the above Contains method. This has the recursion.
+        /// This checks to see if the selected value is larger or smaller than the root and either moves left or right
+        /// down the tree until either the end is found or the node is found.
+        /// </summary>
+        /// <param name="root">The current root node</param>
+        /// <param name="value">The int value that is searched</param>
+        /// <returns>Returns a boolean to the caller</returns>
+        public bool Contains(Node<int> root, int value)
+        {
+            bool output = false;
+
+            if (value < root.Value)
+            {
+                if (root.LeftChild != null)
+                    output = Contains(root.LeftChild, value);
+            }
+            else if (value > root.Value)
+            {
+                if (root.RightChild != null)
+                    output = Contains(root.RightChild, value);
+            }
+            else if (root.Value == value)
+            {
+                output = true;
+            }
+
+            return output;
+
+        }
+
 
     }
 }
