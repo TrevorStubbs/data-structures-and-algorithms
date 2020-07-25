@@ -13,11 +13,15 @@ This Data Structure demonstrates how a tree is constructed. Also how to move thr
 - Tree.PreOrder(root) - Time: O(n) | Space: O(1)
 - Tree.InOrder(root) - Time: O(n) | Space: O(1)
 - Tree.PostOrder(root) - Time: O(n) | Space: O(1)
+- BinarySearchTree.Add(value) - Time: O(n) | Space: O(1)
+- BinarySearchTree.Contains(value) - Time: O(log<sub>n</sub>) | Space: O(1)
 
 ## API
 - Tree.PreOrder()
 - Tree.InOrder()
 - Tree.PostOrder()
+- BinarySearchTree.Add()
+- BinarySearchTree.Contains() 
 
 ---
 
