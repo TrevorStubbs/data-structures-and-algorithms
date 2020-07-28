@@ -111,5 +111,33 @@ namespace TreesLibrary
 
             traversal.Add(root.Value);
         }
+
+        /// <summary>
+        /// Finds the maximum Value in the Tree. INTEGER ONLY
+        /// </summary>
+        /// <param name="root">Takes an integer node</param>
+        /// <returns>Returns the Maximum integer</returns>
+        public int FindMaximumValue(Node<int> root)
+        {
+            int maxValue = root.Value;
+            Queue<Node<int>> que = new Queue<Node<int>>();
+            que.Enqueue(root);
+
+            while (que.TryPeek(out _))
+            {
+                Node<int> checkThisNode = que.Dequeue();
+
+                if (checkThisNode.Value > maxValue)
+                    maxValue = checkThisNode.Value;
+
+                if (checkThisNode.RightChild != null)
+                    que.Enqueue(checkThisNode.LeftChild);
+
+                if (checkThisNode.LeftChild != null)
+                    que.Enqueue(checkThisNode.RightChild);
+            }
+
+            return maxValue;
+        }
     }
 }
