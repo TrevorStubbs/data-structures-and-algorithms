@@ -12,6 +12,8 @@
         - [Linked Lists](Dotnet/data-structures/LinkedListLibrary/README.md)
         - [Stacks And Queues](Dotnet/data-structures/StacksAndQueuesLibrary/StacksAndQueuesLibrary/README.md)
         - [Trees and Binary Search Trees](Dotnet/data-structures/TreesLibrary/README.md)
+    - Sorting Alogrithms
+        - [Insertion Sort](DotNet/sorting-algorithms/InsertionSort/README.md)
 - JavaScript
     - Code Challenges
       - 2DArrays
