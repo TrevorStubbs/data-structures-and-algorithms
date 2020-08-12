@@ -1,13 +1,13 @@
 # Challenge Summary
-Insertion Sorts *blog post**
+Merge Sorts *blog post**
 
 ## Challenge Description
-Write a blog post about how Insertion Sorts Work
+Write a blog post about how Merge Sorts Work
 
 
 ## Approach & Efficiency
-- Time: O(n<sup>2</sup>)
-- Space: O(1)
+- Time: O(n<sub>Log n</sub>)
+- Space: O(n)
 
 ## Solution
 [Blog](Blog.md)

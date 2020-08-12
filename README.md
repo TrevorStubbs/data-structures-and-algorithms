@@ -14,6 +14,7 @@
         - [Trees and Binary Search Trees](Dotnet/data-structures/TreesLibrary/README.md)
     - Sorting Alogrithms
         - [Insertion Sort](DotNet/sorting-algorithms/InsertionSort/README.md)
+        - [Merger Sort](DotNet/sorting-algorithms/MergeSort/README.md)
 - JavaScript
     - Code Challenges
       - 2DArrays
