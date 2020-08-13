@@ -13,9 +13,9 @@
         - [Stacks And Queues](Dotnet/data-structures/StacksAndQueuesLibrary/StacksAndQueuesLibrary/README.md)
         - [Trees and Binary Search Trees](Dotnet/data-structures/TreesLibrary/README.md)
     - Sorting Alogrithms
-        - [Insertion Sort](DotNet/sorting-algorithms/InsertionSort/README.md)
-        - [Merge Sort](DotNet/sorting-algorithms/MergeSort/README.md)
-        - [Quick Sort](DotNet/sorting-algorithms/QuickSort/README.md)
+        - [Insertion Sort](Dotnet/sorting-algorithms/InsertionSort/README.md)
+        - [Merge Sort](Dotnet/sorting-algorithms/MergeSort/README.md)
+        - [Quick Sort](Dotnet/sorting-algorithms/QuickSort/README.md)
 - JavaScript
     - Code Challenges
       - 2DArrays
