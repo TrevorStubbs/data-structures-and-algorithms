@@ -17,6 +17,11 @@ namespace MergeSort
             }
         }
 
+        /// <summary>
+        /// This method splits the input array in half and then recursively calls itself again to keep splitting the array up. Once its split it sends it through the next method.
+        /// </summary>
+        /// <param name="arr">An array of integers</param>
+        /// <returns>An array of integers</returns>
         public static int[] MergeSortMethod(int[] arr)
         {
             int n = arr.Length;
@@ -58,6 +63,12 @@ namespace MergeSort
             return arr;
         }
 
+        /// <summary>
+        /// This method takes the input array and the upper and low bounds of the array. The rest of the method stitches the array back together while sorting its elements.
+        /// </summary>
+        /// <param name="left">The low bound of the array</param>
+        /// <param name="right">The upper bound of the array</param>
+        /// <param name="arr">An integer array</param>
         static void MergeSortMethod(int[] left, int[] right, int[] arr)
         {
             int i = 0;
