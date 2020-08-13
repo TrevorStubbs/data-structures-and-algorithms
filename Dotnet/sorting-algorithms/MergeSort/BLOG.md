@@ -47,6 +47,7 @@ ALGORITHM Merge(left, right, arr)
        set remaining entries in arr to remaining values in left
 
 ```
+<sub>Code Fellows</sub>
 
 ## Visualization
 ![Start](assets/Start.png)
