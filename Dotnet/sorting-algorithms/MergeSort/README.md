@@ -10,4 +10,4 @@ Write a blog post about how Merge Sorts Work
 - Space: O(n)
 
 ## Solution
-[Blog](Blog.md)
+[Blog](assets/Blog.md)

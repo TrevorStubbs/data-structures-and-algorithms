@@ -10,4 +10,4 @@ Write a blog post about how Insertion Sorts Work
 - Space: O(1)
 
 ## Solution
-[Blog](Blog.md)
+[Blog](assets/Blog.md)

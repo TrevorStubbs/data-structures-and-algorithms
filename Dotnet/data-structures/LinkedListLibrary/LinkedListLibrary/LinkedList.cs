@@ -231,5 +231,18 @@ namespace LinkedListLibrary
             
         }
 
+        public void ReverseLinkedList()
+        {
+            Node prev = null, current = Head, next = null;
+            while (current != null)
+            {
+                next = current.Next;
+                current.Next = prev;
+                prev = current;
+                current = next;
+            }
+            Head = prev;
+        }
+
     }
 }
