@@ -26,6 +26,7 @@
         
       arr[j + 1] <-- temp
 ```
+<sub>Code Fellows</sub>
 
 ## Visualization
 ![Start](assets/Start.png)
