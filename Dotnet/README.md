@@ -12,3 +12,8 @@
 - [Linked Lists](data-structures/LinkedListLibrary/README.md)
 - [Stacks And Queues](data-structures/StacksAndQueuesLibrary/StacksAndQueuesLibrary/README.md)
 - [Trees and Binary Search Trees](data-structures/TreesLibrary/README.md)
+
+### Sorting Algorithm Blogs
+- [Insertion Sort](sorting-algorithms/InsertionSort/README.md)
+- [Merge Sort](sorting-algorithms/MergeSort/README.md)
+- [Quick Sort](sorting-algorithms/QuickSort/README.md)

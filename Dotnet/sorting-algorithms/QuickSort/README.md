@@ -10,4 +10,4 @@ Write a blog post about how Quick Sorts Work
 - Space: O(1)
 
 ## Solution
-[Blog](assets/Blog.md)
+[Blog](BLOG.md)
