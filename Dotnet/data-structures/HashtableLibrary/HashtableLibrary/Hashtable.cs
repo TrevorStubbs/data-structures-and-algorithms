@@ -8,11 +8,20 @@ namespace HashtableLibrary
     {
         public LinkedList<LinkedListNode<Node<T?>>>[] Map { get; set; }
 
+        /// <summary>
+        /// Initializes the hash table with LinkedList of LinkListNodes.
+        /// </summary>
+        /// <param name="size">Define your hashtable size</param>
         public Hashtable(int size)
         {
             Map = new LinkedList<LinkedListNode<Node<T?>>>[size];
         }
 
+        /// <summary>
+        /// Calculates a hash from a string.
+        /// </summary>
+        /// <param name="key">A string to be hashed</param>
+        /// <returns>A hash in the form of an integer</returns>
         private int GetHash(string key)
         {
             int total = 0;
@@ -28,6 +37,11 @@ namespace HashtableLibrary
             return index;
         }
 
+        /// <summary>
+        /// Builds a new Node then wraps it into a LinkedListNode and places it into the hashtable at the hashed index.
+        /// </summary>
+        /// <param name="key">The Key of the Node</param>
+        /// <param name="value">The Value of the Node</param>
         public void Add(string key, T value)
         {
             int index = GetHash(key);
@@ -42,6 +56,11 @@ namespace HashtableLibrary
             Map[index].AddLast(node);
         }
 
+        /// <summary>
+        /// Retrieves the Value of the Node if it exsists.
+        /// </summary>
+        /// <param name="key">Needs a string for the Key</param>
+        /// <returns>Returns the Value of the Node.</returns>
         public T? Get(string key)
         {
             int index = GetHash(key);
@@ -70,6 +89,11 @@ namespace HashtableLibrary
             return null;
         }
 
+        /// <summary>
+        /// Searches the Hashtable to see if the key is in the table.
+        /// </summary>
+        /// <param name="key">Needs a string for the Key</param>
+        /// <returns>True if the key exisits.</returns>
         public bool Contains(string key)
         {
             int index = GetHash(key);
@@ -86,6 +110,13 @@ namespace HashtableLibrary
                     {
                         return true;
                     }
+
+                    if(current.Next == null)
+                    {
+                        return false;
+                    }
+
+                    current = current.Next;
                 }
             }
             return false;
