@@ -30,10 +30,6 @@ Write a method called `repeatedWord` a large string and returns the first wod to
 ### Whiteboard Visual
 ![Whiteboard](assets/Whiteboard.png)
 
----
-
-### Github Link
-- [GitHub](https://github.com/TrevorStubbs/data-structures-and-algorithms/blob/master/Dotnet/code-challenges/ArrayShift/ArrayShift/Program.cs)
 
 ---
 
