@@ -7,6 +7,7 @@
 - [Stacks With Queues](code-challenges/QueuesWithStacks/README.md)
 - [FIFO Animal Shelter](code-challenges/FIFOAnimalShelter/README.md)
 - [Multi Bracket Validation](code-challenges/MultiBracketValidation/README.md)
+- [Repeated Word](code-challenges/FindTheRepeatedWord/README.md)
 
 ### Data Structures
 - [Linked Lists](data-structures/LinkedListLibrary/README.md)
