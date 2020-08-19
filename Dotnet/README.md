@@ -14,6 +14,7 @@
 - [Stacks And Queues](data-structures/StacksAndQueuesLibrary/StacksAndQueuesLibrary/README.md)
 - [Trees and Binary Search Trees](data-structures/TreesLibrary/README.md)
 - [Hashtable](data-structures/HashtableLibrary/README.md)
+- [Tree Intersection](code-challenges/tree-intersection/README.md)
 
 ### Sorting Algorithm Blogs
 - [Insertion Sort](sorting-algorithms/InsertionSort/README.md)

@@ -9,6 +9,7 @@
         - [FIFO Animal Shelter](Dotnet/code-challenges/FIFOAnimalShelter/README.md)
         - [Multi Bracket Validation](Dotnet/code-challenges/MultiBracketValidation/README.md)
         - [Repeated Word](Dotnet/code-challenges/FindTheRepeatedWord/README.md)
+        - [Tree Intersection](Dotnet/code-challenges/tree-intersection/README.md)
     - Data Structures
         - [Linked Lists](Dotnet/data-structures/LinkedListLibrary/README.md)
         - [Stacks And Queues](Dotnet/data-structures/StacksAndQueuesLibrary/StacksAndQueuesLibrary/README.md)
