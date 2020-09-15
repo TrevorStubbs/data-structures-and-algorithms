@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using LinkedListLibrary;
 
@@ -18,10 +19,13 @@ namespace BuildAnOdometerWithALinkedList
                 Increment(linkedList.Head, linkedList);
             }
 
-            ReverseLinkedList(linkedList);
+            //ReverseLinkedList(linkedList);
+
+            var list = ReverseLinkedListRecusrive(linkedList);
 
 
             Console.WriteLine(linkedList.ToString());
+            //Console.WriteLine(list.ToString());
         }
 
         static void Increment(Node head, LinkedList linkedList)
@@ -46,7 +50,10 @@ namespace BuildAnOdometerWithALinkedList
 
         public static void ReverseLinkedList(LinkedList list)
         {
-            Node prev = null, current = list.Head, next = null;
+            Node prev = null;
+            Node current = list.Head;
+            Node next = null;
+
             while (current != null)
             {
                 next = current.Next;
@@ -56,6 +63,45 @@ namespace BuildAnOdometerWithALinkedList
             }
             list.Head = prev;
         }
+
+        public static LinkedList ReverseLinkedListRecusrive(LinkedList list)
+        {
+            
+            list.Append(ReverseLinkedListRecusrive(list.Head));
+
+            return list;
+        }
+
+        public static Node ReverseLinkedListRecusrive(LinkedList list, Node head)
+        {
+            if (head != null)
+            {
+                Node temp = list.Head;
+                head = ReverseLinkedListRecusrive(list, head);
+            }
+
+            return list;
+        }
+
+        //public static Node ReverseLinkedListRecusrive(Node head)
+        //{
+        //    if (head == null)
+        //    {
+        //        return head;
+        //    }
+
+        //    if (head.Next == null)
+        //    {
+        //        return head;
+        //    }
+
+        //    Node newHead = ReverseLinkedListRecusrive(head.Next);
+
+        //    head.Next.Next = head;
+        //    head.Next = null;
+
+        //    return newHead;
+        //}
 
     }
 
