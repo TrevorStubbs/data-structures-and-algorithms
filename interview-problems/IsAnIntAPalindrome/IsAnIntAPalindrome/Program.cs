@@ -7,7 +7,7 @@ namespace IsAnIntAPalindrome
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(IsAnIntAPalindrome(-121));
+            Console.WriteLine(IsAnIntAPalindrome(121));
         }
 
         public static bool IsAnIntAPalindrome(int inputInt)
