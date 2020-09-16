@@ -36,3 +36,7 @@
       - value-vs-reference
 - Interview Problems
   - [Eeny Meeny Miny Moe](interview-problems/EenyMeenyMinyMoeInterviewQuestion/README.md)
+  - [Build an Odometer With a Linkedlist](interview-problems/BuildAnOdometerWithAlinkedList/README.md)  
+  - [Is an Integer a Palindrome](interview-problems/IsAnIntAPalindrome/README.md)
+  - [Matching Leafs On Two Trees](interview-problems/MatchingLeafsOnTwoTrees/README.md)
+  - [Reverse an Integer](interview-problems/ReverseInteger/README.md)
