@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumeralToInteger", "RomanNumeralToInteger\RomanNumeralToInteger.csproj", "{3DD4A2E8-CD02-49A0-9D21-B44D5CFDAADA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DD4A2E8-CD02-49A0-9D21-B44D5CFDAADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DD4A2E8-CD02-49A0-9D21-B44D5CFDAADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DD4A2E8-CD02-49A0-9D21-B44D5CFDAADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DD4A2E8-CD02-49A0-9D21-B44D5CFDAADA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4FD4B56-194B-4F3A-AF62-78F757E144FF}
+	EndGlobalSection
+EndGlobal
