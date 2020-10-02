@@ -15,6 +15,7 @@
         - [Stacks And Queues](Dotnet/data-structures/StacksAndQueuesLibrary/StacksAndQueuesLibrary/README.md)
         - [Trees and Binary Search Trees](Dotnet/data-structures/TreesLibrary/README.md)
         - [Hashtable](Dotnet/data-structures/HashtableLibrary/README.md)
+        - [Graph](Dotnet/data-structures/GraphLibrary/README.md)
     - Sorting Alogrithms
         - [Insertion Sort](Dotnet/sorting-algorithms/InsertionSort/README.md)
         - [Merge Sort](Dotnet/sorting-algorithms/MergeSort/README.md)
