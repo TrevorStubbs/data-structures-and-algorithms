@@ -127,5 +127,36 @@ namespace GraphLibrary
             }
         }
 
+        /// <summary>
+        /// This is my iterative way of performing a Breadth First traversal of a graph.
+        /// </summary>
+        /// <param name="start">The node to start the traversal with</param>
+        /// <returns>A list of all vertices visited using this method</returns>
+        public List<Vertex<T>> BreadthFirstTraversal(Vertex<T> start)
+        {
+            List<Vertex<T>> nodes = new List<Vertex<T>>();
+            HashSet<Vertex<T>> vistedNodes = new HashSet<Vertex<T>>();
+            Queue<Vertex<T>> breadth = new Queue<Vertex<T>>();
+            breadth.Enqueue(start);
+            vistedNodes.Add(start);
+
+            while(breadth.TryPeek(out _))
+            {
+                Vertex<T> front = breadth.Dequeue();
+                nodes.Add(front);
+
+                foreach (var child in AdjacencyList[front])
+                {
+                    if (!vistedNodes.Contains(child.Vertex))
+                    {
+                        vistedNodes.Add(child.Vertex);
+                        breadth.Enqueue(child.Vertex);
+                    }
+                }
+            }
+
+            return nodes;
+        }
+
     }
 }
