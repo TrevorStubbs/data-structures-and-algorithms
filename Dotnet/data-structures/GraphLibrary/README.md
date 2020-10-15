@@ -20,6 +20,7 @@ This Data Structure demonstrates how a graph is constructed.
 - GetAllVertices() - Time: O(n) | Space: O(n)
 - GetSize() - Time: O(n) | Space: O(n)
 - Print() - Time: O(n) | Space: O(n)
+- BreadthFirstTraversal(Vertex) - Time: O(n) | Space: O(n)
 
 ## API
 - AddVertex(value)
@@ -30,6 +31,7 @@ This Data Structure demonstrates how a graph is constructed.
 - GetAllVertices() 
 - GetSize() 
 - Print() 
+- BreadthFirstTraversal(Vertex)
 
 
 
