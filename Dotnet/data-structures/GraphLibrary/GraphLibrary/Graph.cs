@@ -140,7 +140,7 @@ namespace GraphLibrary
             breadth.Enqueue(start);
             vistedNodes.Add(start);
 
-            while(breadth.TryPeek(out _))
+            while (breadth.TryPeek(out _))
             {
                 Vertex<T> front = breadth.Dequeue();
                 nodes.Add(front);
@@ -158,5 +158,40 @@ namespace GraphLibrary
             return nodes;
         }
 
+        /// <summary>
+        /// Recursive Depth First Traversal of the graph.
+        /// </summary>
+        /// <param name="start">The starting vertex</param>
+        /// <returns>A list of all the vertices in the graph</returns>
+        public List<Vertex<T>> DepthFirstTraversal(Vertex<T> start)
+        {
+            HashSet<Vertex<T>> visitedNodes = new HashSet<Vertex<T>>();
+            List<Vertex<T>> traversalList = new List<Vertex<T>>();
+            DepthFirstTraversal(start, visitedNodes, traversalList);
+
+            return traversalList;
+        }
+
+        /// <summary>
+        /// Helper method for DepthFirstTraversal.
+        /// </summary>
+        /// <param name="currentVertex">The Vertex to look at.</param>
+        /// <param name="vistedSet">A hashset of all the visited vertices</param>
+        /// <param name="traversalList">The list of traversed vertices.</param>
+        /// <returns>A list of the traversed vertices</returns>
+        private List<Vertex<T>> DepthFirstTraversal(Vertex<T> currentVertex, HashSet<Vertex<T>> vistedSet, List<Vertex<T>> traversalList)
+        {
+            if (!vistedSet.Contains(currentVertex))
+            {
+                vistedSet.Add(currentVertex);
+                traversalList.Add(currentVertex);
+                foreach (var edge in AdjacencyList[currentVertex])
+                {
+                    DepthFirstTraversal(edge.Vertex, vistedSet, traversalList);
+                }
+            }
+
+            return traversalList;
+        }
     }
 }

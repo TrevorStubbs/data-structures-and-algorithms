@@ -139,5 +139,47 @@ namespace GraphxUnitTests
             Assert.NotNull(checkTheseInts);
             Assert.Equal(expectedList, checkTheseInts);
         }
+
+        [Fact]
+        public void CanPerformADepthFirstTraversal()
+        {
+            // Arrange
+            Graph<int, int> graph = new Graph<int, int>();
+
+            var a = graph.AddVertex(1);
+            var b = graph.AddVertex(2);
+            var c = graph.AddVertex(3);
+            var d = graph.AddVertex(4);
+            var e = graph.AddVertex(5);
+            var f = graph.AddVertex(6);
+
+            graph.AddUndirectionalEdge(a, b, 0);
+            graph.AddUndirectionalEdge(b, c, 0);
+            graph.AddUndirectionalEdge(c, d, 0);
+            graph.AddUndirectionalEdge(d, e, 0);
+            graph.AddUndirectionalEdge(e, f, 0);
+            graph.AddUndirectionalEdge(c, a, 0);
+            graph.AddUndirectionalEdge(d, b, 0);
+            graph.AddUndirectionalEdge(f, d, 0);
+
+            var expectedList = new List<int>()
+            {
+                1,2,3,4,5,6
+            };
+
+            // Act
+            var returnFromMethod = graph.DepthFirstTraversal(a);
+
+            var checkTheseInts = new List<int>();
+
+            foreach (var item in returnFromMethod)
+            {
+                checkTheseInts.Add(item.Value);
+            }
+
+            Assert.NotNull(returnFromMethod);
+            Assert.NotNull(checkTheseInts);
+            Assert.Equal(expectedList, checkTheseInts);
+        }
     }
 }

@@ -10,6 +10,8 @@ This Data Structure demonstrates how a graph is constructed.
 1. The proper size is returned, representing the number of nodes in the graph
 1. A graph with only one node and edge can be properly returned
 1. An empty graph properly returns null
+1. Successfully perform a breadth first traversal of all the vertices in the adjacency list.
+1. Successfully perform a depth first traversal of all the vertices in the adjacency list.
 
 ## Approach & Efficiency (Adjacency List)
 - AddVertex(value) - Time: O(1) | Space: O(1)
@@ -21,6 +23,7 @@ This Data Structure demonstrates how a graph is constructed.
 - GetSize() - Time: O(n) | Space: O(n)
 - Print() - Time: O(n) | Space: O(n)
 - BreadthFirstTraversal(Vertex) - Time: O(n) | Space: O(n)
+- DepthFirstTraversal(Vertex) - Time: O(n) | Space: O(n)
 
 ## API
 - AddVertex(value)
@@ -32,6 +35,7 @@ This Data Structure demonstrates how a graph is constructed.
 - GetSize() 
 - Print() 
 - BreadthFirstTraversal(Vertex)
+- DepthFirstTraversal(Vertex)
 
 
 
