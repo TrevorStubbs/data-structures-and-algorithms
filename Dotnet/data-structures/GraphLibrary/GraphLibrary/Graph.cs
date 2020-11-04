@@ -88,7 +88,7 @@ namespace GraphLibrary
         /// <summary>
         /// Gets all the vertices from the graph
         /// </summary>
-        /// <returns>A List of all the verticies from the graph</returns>
+        /// <returns>A List of all the vertices from the graph</returns>
         public List<Vertex<T>> GetAllVertices()
         {
             List<Vertex<T>> vertices = new List<Vertex<T>>();
@@ -100,7 +100,13 @@ namespace GraphLibrary
             return vertices;
         }
 
-        public Edge<T, W> GetAnEdge(T startValue, T endValue)
+        /// <summary>
+        /// Checks to see if an edge between 2 vertices exists and if it does exist then output the edge object.
+        /// </summary>
+        /// <param name="startValue">The value of the first vertex</param>
+        /// <param name="endValue">The value of the second vertex</param>
+        /// <returns>A boolean and an edge (if it exists)</returns>
+        public Boolean GetAnEdge(T startValue, T endValue, out Edge<T, W> outputEdge)
         {
             var startVertex = GetVertex(startValue);
             var endVertex = GetVertex(endValue);
@@ -111,15 +117,17 @@ namespace GraphLibrary
             {
                 if (endVertex == edge.Vertex)
                 {
-                    return edge;
+                    outputEdge = edge;
+                    return true;
                 }
             }
 
-            return null;
+            outputEdge = null;
+            return false;
         }
 
         /// <summary>
-        /// Gets the total number of verticies from the graph
+        /// Gets the total number of vertices from the graph
         /// </summary>
         /// <returns>An integer of the size of the graph</returns>
         public int GetSize()
@@ -128,7 +136,7 @@ namespace GraphLibrary
         }
 
         /// <summary>
-        /// Console WriteLines all the verticies from the graph
+        /// Console WriteLines all the vertices from the graph
         /// </summary>
         public void Print()
         {
@@ -212,9 +220,17 @@ namespace GraphLibrary
             return traversalList;
         }
 
+        /// <summary>
+        /// An extension of the graph class that only deals with <string, int> graphs.
+        /// </summary>
         public static class StringIntGraph
         {
-
+            /// <summary>
+            /// Finds if a route from 1 location to another is available and if it is then it returns the cost of the whole route. 
+            /// </summary>
+            /// <param name="graph">The graph/map to traverse</param>
+            /// <param name="locations">An array of starting location, ending location, and any intermediate stops.</param>
+            /// <returns>A tuple with a boolean and the cost of the trip.</returns>
             public static Tuple<bool, int> GetEdges(Graph<string, int> graph, string[] locations)
             {
                 var totalPrice = 0;
@@ -222,15 +238,7 @@ namespace GraphLibrary
 
                 for (int i = 0; i < locations.Length - 1; i++)
                 {
-                    // Get Vertex from the value
-                    var vertex = graph.GetVertex(locations[i]);
-
-                    // See if the next location in the array is a neighbor
-                    // --- If so make possible true
-                    // --- add weight to totalPrice
-                    var edge = graph.GetAnEdge(locations[i], locations[i + 1]);
-
-                    if (edge != null)
+                    if (graph.GetAnEdge(locations[i], locations[i+1], out var edge))
                     {
                         possible = true;
                         totalPrice += edge.Weight;
@@ -242,8 +250,7 @@ namespace GraphLibrary
                     }
                 }
 
-                Tuple<bool, int> outputTuple = new Tuple<bool, int>(item1: possible, item2: totalPrice);
-                return outputTuple;
+                return new Tuple<bool, int>(item1: possible, item2: totalPrice);
             }
         }
     }
