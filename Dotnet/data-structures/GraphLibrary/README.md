@@ -24,6 +24,8 @@ This Data Structure demonstrates how a graph is constructed.
 - Print() - Time: O(n) | Space: O(n)
 - BreadthFirstTraversal(Vertex) - Time: O(n) | Space: O(n)
 - DepthFirstTraversal(Vertex) - Time: O(n) | Space: O(n)
+- FindEdges(Graph, Route) - Time: O(n) | Space: O(1)
+- FindAnEge(Start, End) - Time: O(n) | Space: O(1)
 
 ## API
 - AddVertex(value)
@@ -36,7 +38,8 @@ This Data Structure demonstrates how a graph is constructed.
 - Print() 
 - BreadthFirstTraversal(Vertex)
 - DepthFirstTraversal(Vertex)
-
+- FindEdges(Graph, Route)
+- FindAnEdge(Start, End)
 
 
 

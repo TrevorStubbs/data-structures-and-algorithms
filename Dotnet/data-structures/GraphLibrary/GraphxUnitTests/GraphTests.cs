@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using Xunit;
+using static GraphLibrary.Graph<string, int>;
 
 namespace GraphxUnitTests
 {
@@ -180,6 +181,108 @@ namespace GraphxUnitTests
             Assert.NotNull(returnFromMethod);
             Assert.NotNull(checkTheseInts);
             Assert.Equal(expectedList, checkTheseInts);
+        }
+
+        [Fact]
+        public void CanFindTheRouteFromMetrovilleToPandora()
+        {
+            //arrange
+            Graph<string, int> graph = new Graph<string, int>();
+
+            var Pandora = graph.AddVertex("Pandora");
+            var Arendelle = graph.AddVertex("Arendelle");
+            var Metroville = graph.AddVertex("Metroville");
+            var Monstropolis = graph.AddVertex("Monstropolis");
+            var Narnia = graph.AddVertex("Narnia");
+            var Naboo = graph.AddVertex("Naboo");
+
+            graph.AddUndirectionalEdge(Pandora, Metroville, 82);
+            graph.AddUndirectionalEdge(Pandora, Arendelle, 150);
+            graph.AddUndirectionalEdge(Arendelle, Metroville, 99);
+            graph.AddUndirectionalEdge(Arendelle, Monstropolis, 42);
+            graph.AddUndirectionalEdge(Metroville, Narnia, 37);
+            graph.AddUndirectionalEdge(Metroville, Monstropolis, 105);
+            graph.AddUndirectionalEdge(Metroville, Naboo, 26);
+            graph.AddUndirectionalEdge(Monstropolis, Narnia, 73);
+            graph.AddUndirectionalEdge(Naboo, Narnia, 250);
+
+            Tuple<bool, int> expected = new Tuple<bool, int>(item1: true, item2: 82);
+
+            // Act
+            string[] route = { "Metroville", "Pandora" };
+            var returnFromMethod = StringIntGraph.GetEdges(graph, route);
+
+            // Assert
+            Assert.NotNull(returnFromMethod);
+            Assert.Equal(expected, returnFromMethod);
+        }
+
+        [Fact]
+        public void CanFindTheRouteFromArendelleToMonsteropolisToNaboo()
+        {
+            //arrange
+            Graph<string, int> graph = new Graph<string, int>();
+
+            var Pandora = graph.AddVertex("Pandora");
+            var Arendelle = graph.AddVertex("Arendelle");
+            var Metroville = graph.AddVertex("Metroville");
+            var Monstropolis = graph.AddVertex("Monstropolis");
+            var Narnia = graph.AddVertex("Narnia");
+            var Naboo = graph.AddVertex("Naboo");
+
+            graph.AddUndirectionalEdge(Pandora, Metroville, 82);
+            graph.AddUndirectionalEdge(Pandora, Arendelle, 150);
+            graph.AddUndirectionalEdge(Arendelle, Metroville, 99);
+            graph.AddUndirectionalEdge(Arendelle, Monstropolis, 42);
+            graph.AddUndirectionalEdge(Metroville, Narnia, 37);
+            graph.AddUndirectionalEdge(Metroville, Monstropolis, 105);
+            graph.AddUndirectionalEdge(Metroville, Naboo, 26);
+            graph.AddUndirectionalEdge(Monstropolis, Naboo, 73);
+            graph.AddUndirectionalEdge(Naboo, Narnia, 250);
+
+            Tuple<bool, int> expected = new Tuple<bool, int>(item1: true, item2: 115);
+
+            // Act
+            string[] route = { "Arendelle", "Monstropolis", "Naboo" };
+            var returnFromMethod = StringIntGraph.GetEdges(graph, route);
+
+            // Assert
+            Assert.NotNull(returnFromMethod);
+            Assert.Equal(expected, returnFromMethod);
+        }
+
+        [Fact]
+        public void CanNotFindARouteFromNabooToPandora()
+        {
+            //arrange
+            Graph<string, int> graph = new Graph<string, int>();
+
+            var Pandora = graph.AddVertex("Pandora");
+            var Arendelle = graph.AddVertex("Arendelle");
+            var Metroville = graph.AddVertex("Metroville");
+            var Monstropolis = graph.AddVertex("Monstropolis");
+            var Narnia = graph.AddVertex("Narnia");
+            var Naboo = graph.AddVertex("Naboo");
+
+            graph.AddUndirectionalEdge(Pandora, Metroville, 82);
+            graph.AddUndirectionalEdge(Pandora, Arendelle, 150);
+            graph.AddUndirectionalEdge(Arendelle, Metroville, 99);
+            graph.AddUndirectionalEdge(Arendelle, Monstropolis, 42);
+            graph.AddUndirectionalEdge(Metroville, Narnia, 37);
+            graph.AddUndirectionalEdge(Metroville, Monstropolis, 105);
+            graph.AddUndirectionalEdge(Metroville, Naboo, 26);
+            graph.AddUndirectionalEdge(Monstropolis, Naboo, 73);
+            graph.AddUndirectionalEdge(Naboo, Narnia, 250);
+
+            Tuple<bool, int> expected = new Tuple<bool, int>(item1: false, item2: 0);
+
+            // Act
+            string[] route = { "Naboo", "Pandora" };
+            var returnFromMethod = StringIntGraph.GetEdges(graph, route);
+
+            // Assert
+            Assert.NotNull(returnFromMethod);
+            Assert.Equal(expected, returnFromMethod);
         }
     }
 }
