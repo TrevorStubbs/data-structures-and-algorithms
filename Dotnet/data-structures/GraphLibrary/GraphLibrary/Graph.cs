@@ -193,5 +193,33 @@ namespace GraphLibrary
 
             return traversalList;
         }
+
+        public Tuple<bool, int> GetEdge(Graph<T, W> graph, List<T> locations)
+        {
+            var totalPrice = 0;
+            Tuple<bool, int> outputTuple = new Tuple<bool, int>(item1: false, item2: totalPrice);
+           
+
+            foreach (var location in locations)
+            {
+                var vertex = GetVertex(location);
+                if (vertex == null)
+                {
+                    outputTuple.Item1.Equals(false);
+                    outputTuple.Item2.Equals(0);
+                    return outputTuple;
+                }
+
+                var neighbors = GetNeighbors(vertex);
+
+
+            }
+
+          
+
+
+
+            return outputTuple;
+        }
     }
 }
