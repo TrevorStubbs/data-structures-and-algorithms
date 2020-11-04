@@ -100,6 +100,24 @@ namespace GraphLibrary
             return vertices;
         }
 
+        public Edge<T, W> GetAnEdge(T startValue, T endValue)
+        {
+            var startVertex = GetVertex(startValue);
+            var endVertex = GetVertex(endValue);
+
+            var startVertexEdges = AdjacencyList[startVertex];
+
+            foreach (var edge in startVertexEdges)
+            {
+                if (endVertex == edge.Vertex)
+                {
+                    return edge;
+                }
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// Gets the total number of verticies from the graph
         /// </summary>
@@ -194,32 +212,39 @@ namespace GraphLibrary
             return traversalList;
         }
 
-        public Tuple<bool, int> GetEdge(Graph<T, W> graph, List<T> locations)
+        public static class StringIntGraph
         {
-            var totalPrice = 0;
-            Tuple<bool, int> outputTuple = new Tuple<bool, int>(item1: false, item2: totalPrice);
-           
 
-            foreach (var location in locations)
+            public static Tuple<bool, int> GetEdges(Graph<string, int> graph, string[] locations)
             {
-                var vertex = GetVertex(location);
-                if (vertex == null)
+                var totalPrice = 0;
+                var possible = false;
+
+                for (int i = 0; i < locations.Length - 1; i++)
                 {
-                    outputTuple.Item1.Equals(false);
-                    outputTuple.Item2.Equals(0);
-                    return outputTuple;
+                    // Get Vertex from the value
+                    var vertex = graph.GetVertex(locations[i]);
+
+                    // See if the next location in the array is a neighbor
+                    // --- If so make possible true
+                    // --- add weight to totalPrice
+                    var edge = graph.GetAnEdge(locations[i], locations[i + 1]);
+
+                    if (edge != null)
+                    {
+                        possible = true;
+                        totalPrice += edge.Weight;
+                    }
+                    else
+                    {
+                        possible = false;
+                        totalPrice = 0;
+                    }
                 }
 
-                var neighbors = GetNeighbors(vertex);
-
-
+                Tuple<bool, int> outputTuple = new Tuple<bool, int>(item1: possible, item2: totalPrice);
+                return outputTuple;
             }
-
-          
-
-
-
-            return outputTuple;
         }
     }
 }
