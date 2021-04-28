@@ -8,6 +8,10 @@ namespace IsAnIntAPalindrome
         static void Main(string[] args)
         {
             Console.WriteLine(IsAnIntAPalindrome(121));
+
+            Console.WriteLine();
+
+            Console.WriteLine(IsAnIntAPalindromeV2(1221));
         }
 
         public static bool IsAnIntAPalindrome(int inputInt)
@@ -32,6 +36,19 @@ namespace IsAnIntAPalindrome
                 }
             }
             return true;
+        }
+
+        public static bool IsAnIntAPalindromeV2(int inputInt)
+        {
+            var intStr = inputInt.ToString();
+            char[] strChar = intStr.ToCharArray();
+            Array.Reverse(strChar);
+            var newString = new string(strChar);
+
+            if (intStr == newString)
+                return true;
+
+            return false;
         }
     }
 }
