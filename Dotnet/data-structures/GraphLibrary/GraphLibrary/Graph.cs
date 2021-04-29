@@ -106,7 +106,7 @@ namespace GraphLibrary
         /// <param name="startValue">The value of the first vertex</param>
         /// <param name="endValue">The value of the second vertex</param>
         /// <returns>A boolean and an edge (if it exists)</returns>
-        public Boolean GetAnEdge(T startValue, T endValue, out Edge<T, W> outputEdge)
+        public Boolean TryGetAnEdge(T startValue, T endValue, out Edge<T, W> outputEdge)
         {
             var startVertex = GetVertex(startValue);
             var endVertex = GetVertex(endValue);
@@ -238,7 +238,7 @@ namespace GraphLibrary
 
                 for (int i = 0; i < locations.Length - 1; i++)
                 {
-                    if (graph.GetAnEdge(locations[i], locations[i+1], out var edge))
+                    if (graph.TryGetAnEdge(locations[i], locations[i+1], out var edge))
                     {
                         possible = true;
                         totalPrice += edge.Weight;
