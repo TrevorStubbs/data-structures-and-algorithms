@@ -88,6 +88,8 @@ namespace GreatestNumberOfCandies
             }
 
             // outputList.Add(WouldBeGreater)
+
+            return outputList;
         }
     }
 }
