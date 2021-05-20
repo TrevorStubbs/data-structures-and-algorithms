@@ -24,6 +24,9 @@ namespace AmazonPlayground
               
             Console.WriteLine(words.Contains(word));
 
+            if(words.Split(words[2])[0] == split[0])
+                Console.WriteLine(true);
+
         }
     }
 }
