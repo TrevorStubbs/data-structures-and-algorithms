@@ -21,12 +21,22 @@ namespace AmazonPlayground
             var list = new List<string>();
 
             if (list.Any())
-              
-            Console.WriteLine(words.Contains(word));
 
-            if(words.Split(words[2])[0] == split[0])
+                Console.WriteLine(words.Contains(word));
+
+            if (words.Split(words[2])[0] == split[0])
                 Console.WriteLine(true);
 
+            var sub = words.Substring(0, 2);
+
+            Console.WriteLine(sub);
+
+            Console.WriteLine();
+
+            
+
         }
+
+        
     }
 }
