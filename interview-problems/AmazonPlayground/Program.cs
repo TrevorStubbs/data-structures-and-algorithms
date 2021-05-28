@@ -59,10 +59,38 @@ namespace AmazonPlayground
 
             Console.WriteLine(str[4 - 1]);
 
-            var sub = str.Substring(1);
+            // Inclusive to the param
+            var sub = str.Substring(str.Length - 2);
 
-            Console.WriteLine(sub);
+            //From position to length. Do no have it over run or it will error
+            var sub2 = str.Substring(3, str.Length - 3);
 
+            // Start at 0 and return a string of length 3
+            var sub3 = str.Substring(0, 3);
+
+            Console.WriteLine("Here: " + sub);
+            Console.WriteLine(sub2);
+            Console.WriteLine(sub3);
+            Console.WriteLine(str.Last());
+
+            var str1 = "abc";
+            var str2 = "abc";
+
+            Console.WriteLine(str1 == str2);
+
+            var list1 = new List<string>() { str1, str2, "string4" };
+            var list2 = new List<string>() { str1, str2, "string3"};
+
+            Console.WriteLine(list1 == list2);
+
+            for (int i = 0; i < list1.Count; i++)
+            {
+                Console.Write($"{list1[i] == list2[i]}, ");
+            }
+
+            Tuple<int, int> tuple = new Tuple<int, int>(item1: 0, item2:0);
+
+            tuple = 3;
         }
 
         public static void miniMaxSum(List<int> arr)
@@ -99,6 +127,38 @@ namespace AmazonPlayground
             return output;
         }
 
+        // What are the inputs?
+        // What are the outputs?
+        // What kind of comparison or adding or subtracting needs to happen?
+        // Are we looking for the greatest or least of something?
+        // How do we keep track of that?
+        // How does that need to be returned?
+        // How do we need to iterate through all the things?
+        // Recusive?
+        // Iterative?
+
+        public static void Algorithm(string input)
+        {
+            // output var
+
+            // Edge Cases and Base Cases
+
+            // Iterate
+
+            // Edge Cases
+
+            // Return output
+        }
+
+        private static void DoTheThing(string input, int index)
+        {
+            // What are the required inputs?
+            // What do i do when we find solution?
+            // Do we add it to a list and return that list?
+            // Do we return a bool?
+            // Do we return a string?
+            // Do we modifiy a global item.
+        }
 
     }
 }
