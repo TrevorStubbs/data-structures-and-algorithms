@@ -21,8 +21,53 @@ namespace TwoPallets
 
             foreach (var box in boxList)
             {
-                Console.Write($"{box} ");
+                if(boxList.IndexOf(box) == boxList.Count - 1)
+                    Console.WriteLine($"{box}");
+                else
+                    Console.Write($"{box}, ");
             }
+
+            var input2 = new List<int>() { 12, 100, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40 };
+            var boxList2 = TwoPalletsV2(input2);
+
+            foreach (var box in boxList2)
+            {
+                if (boxList2.IndexOf(box) == boxList2.Count - 1)
+                    Console.WriteLine($"{box}");
+                else
+                    Console.Write($"{box}, ");
+            }
+        }
+
+        public static List<int> TwoPalletsV2(List<int> inputPallet)
+        {
+            var checker = inputPallet[0];
+            inputPallet.RemoveAt(0);
+
+            if (checker != inputPallet.Count)
+                throw new Exception("The input data is invalid.");
+
+            inputPallet.Sort();
+            inputPallet.Reverse();
+
+            var palletA = new List<int>();
+            palletA.Add(inputPallet[0]);
+            inputPallet.RemoveAt(0);
+
+            var palletB = new List<int>(inputPallet);            
+
+            foreach (var box in inputPallet)
+            {
+                palletA.Add(box);
+                palletB.Remove(box);
+
+                if(IsListABiggerThanListB(palletA, palletB))
+                {
+                    return palletA;
+                }
+            }
+
+            return null;
         }
 
         public static List<int> BuildSmallestHeaviestPalletA(List<int> totalPallet)
@@ -36,9 +81,7 @@ namespace TwoPallets
             //var palletA = new Pallet(listA.Count, listA);
             //var palletB = new Pallet(listB.Count, listB);
 
-
             Pallet SmallestHeaviestPallet = BuildSmallestHeaviestPalletA(originalPallet, minimumPalletSize);
-
 
             return SmallestHeaviestPallet.Boxes;
         }
@@ -50,7 +93,6 @@ namespace TwoPallets
             {
                 return null;
             }
-
 
             // Best pallets is: number of boxes Min (at least 2), Total Weights at max.
             var listOfPalletAs = new List<Pallet>(); //if listOfPalletAs.Count > 0 the return the Pallet from this group that has the highest weight.
@@ -72,13 +114,11 @@ namespace TwoPallets
                         Pallet palletA = new Pallet(weightsA.Count, weightsA);
                         Pallet palletB = new Pallet(weightsB.Count, weightsB);
 
-                        if (CompareTwoPallets(palletA, palletB))
+                        if (IsPalletABiggerThanPalletB(palletA, palletB))
                             listOfPalletAs.Add(palletA);
                     }
 
                 }
-
-
             }
 
             if (listOfPalletAs.Count > 0)
@@ -91,6 +131,78 @@ namespace TwoPallets
             // Recursive
             // If we haven't found an appropriately sized pallet then increase the number of boxes to search.
             var pallet = BuildSmallestHeaviestPalletA(originalPallet, numberOfIndexes++);
+
+            return pallet;
+        }
+
+        private static Pallet BuildSmallestHeaviestPalletAV2(Pallet originalPallet, int numberOfIndexes, List<List<int>> listOfIndexes = null)
+        {
+            // Base Case
+            if (numberOfIndexes > originalPallet.NumberOfBoxes)
+            {
+                return null;
+            }
+
+            if (listOfIndexes == null)
+            {
+                listOfIndexes = new List<List<int>>();
+                listOfIndexes.Add(new List<int>() { originalPallet.Boxes[0], originalPallet.Boxes[1] });
+            }
+
+            // Best pallets is: number of boxes Min (at least 2), Total Weights at max.
+            var listOfPalletAs = new List<Pallet>(); //if listOfPalletAs.Count > 0 the return the Pallet from this group that has the highest weight.
+
+            var tempList = new List<List<int>>();
+            foreach (var list in listOfIndexes)
+            {
+                List<int> weights = new List<int>();
+
+                foreach (var number in list)
+                {
+                    weights.Add(number);
+                }
+
+                foreach (var weight in originalPallet.Boxes)
+                {
+                    
+                    var indexList = new List<int>();
+                    indexList.Add(originalPallet.Boxes.IndexOf(weight));
+
+                    foreach (var box in originalPallet.Boxes)
+                    {
+                        indexList.Add(originalPallet.Boxes.IndexOf(box));
+                        List<int> weightsA = new List<int>() { weight };
+                        List<int> weightsB = new List<int>(originalPallet.Boxes);
+
+                        weightsB.RemoveAt(weightsB.IndexOf(weight));
+                        if (!(originalPallet.Boxes.IndexOf(box) == originalPallet.Boxes.IndexOf(weight)))
+                        {
+                            weightsA.Add(box);
+                            weightsB.RemoveAt(weightsB.IndexOf(box));
+
+                            Pallet palletA = new Pallet(weightsA.Count, weightsA);
+                            Pallet palletB = new Pallet(weightsB.Count, weightsB);
+
+                            if (IsPalletABiggerThanPalletB(palletA, palletB))
+                                listOfPalletAs.Add(palletA);
+                        }
+
+                        tempList.Add(indexList);
+                    }
+                }
+            }
+
+            if (listOfPalletAs.Count > 0)
+            {
+                Pallet heaviestPallet = FindHeaviestPallet(listOfPalletAs);
+
+                return heaviestPallet;
+            }
+
+
+            // Recursive
+            // If we haven't found an appropriately sized pallet then increase the number of boxes to search.
+            var pallet = BuildSmallestHeaviestPalletAV2(originalPallet, numberOfIndexes++, tempList);
 
             return pallet;
         }
@@ -108,7 +220,7 @@ namespace TwoPallets
             return heaviest;
         }
 
-        private static bool CompareTwoPallets(Pallet palletA, Pallet palletB)
+        private static bool IsPalletABiggerThanPalletB(Pallet palletA, Pallet palletB)
         {
             if (palletA.TotalWeight > palletB.TotalWeight)
             {
@@ -117,6 +229,31 @@ namespace TwoPallets
             }
 
             return false;
+        }
+
+        private static bool IsListABiggerThanListB(List<int> palletA, List<int> palletB)
+        {
+            var palletASum = GetSumOfList(palletA);
+            var palletBSum = GetSumOfList(palletB);
+
+            if (palletASum > palletBSum)
+            {
+                Console.WriteLine($"PalletA: {palletASum}, PalletB: {palletBSum}");
+                return true;
+            }
+
+            return false;
+        }
+
+        private static int GetSumOfList(List<int> inputList)
+        {
+            int sum = 0;
+            foreach (var box in inputList)
+            {
+                sum += box;
+            }
+
+            return sum;
         }
 
         public class Pallet
