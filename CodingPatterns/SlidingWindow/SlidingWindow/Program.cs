@@ -117,5 +117,33 @@ namespace SlidingWindow
             }
         }
 
+        public static class LongestSubstring
+        {
+            public static int LongestSubstringWithNoMoreThanKDistinctChars(string input, int k)
+            {
+                Dictionary<char, int> charDict = new Dictionary<char, int>();
+
+                int outputNumber = 0;
+
+                List<char> window = new List<char>();
+
+                foreach (var ch in input)
+                {
+                    if(!charDict.ContainsKey(ch))
+                    {
+                        charDict.Add(ch, 0);
+                    }
+
+                    charDict[ch]++;
+
+                    if (charDict.Count == k)
+                    {
+                        break;
+                    }
+                }
+
+                return 0;
+            }
+        }
     }
 }
