@@ -24,6 +24,51 @@ namespace TwoPointersPattern
             Console.WriteLine($"Length after Dups have been removed: {removeDups}");
 
             Console.WriteLine();
+
+            var removeDupsEducativeVersion = RemoveDuplicates.RemoveAllDupsWithArray(new int[] { 2, 3, 3, 3, 6, 9, 9 });
+
+            Console.WriteLine($"Length after Dups have been removed: {removeDupsEducativeVersion}");
+
+            Console.WriteLine();
+
+            var easySquares = SquareArray.GenerateListOfSquaresEasy(new List<int>() { -2, -1, 0, 2, 3 });
+
+            Console.Write($"[ ");
+
+            foreach (var number in easySquares)
+            {
+                Console.Write($"{number} ");
+            }
+
+            Console.Write($"]");
+
+            Console.WriteLine();
+
+            var squares = SquareArray.GenerateArrayOfSquares(new int[] {-2, -1, 0, 2, 3 });
+
+            Console.Write($"[ ");
+
+            foreach (var number in squares)
+            {
+                Console.Write($"{number} ");
+            }
+
+            Console.Write($"]");
+
+            Console.WriteLine();
+
+            var listSquares = SquareArray.GenerateListOfSquares(new List<int>() { -2, -1, 0, 2, 3 });
+
+            Console.Write($"[ ");
+
+            foreach (var number in listSquares)
+            {
+                Console.Write($"{number} ");
+            }
+
+            Console.Write($"]");
+
+            Console.WriteLine();
         }
 
         public static class PairSum
@@ -92,6 +137,8 @@ namespace TwoPointersPattern
         }
         public static class RemoveDuplicates
         {
+            // Time - O(n)
+            // Space - O(1)
             public static int RemoveAllDuplicateNumbers(List<int> inputList)
             {
                 // These are the 2 pointers
@@ -117,20 +164,115 @@ namespace TwoPointersPattern
 
             public static int RemoveAllDupsWithArray(int[] inputArr)
             {
-                // This is the index of the next non-duplicate element.
+                // This is 1 of the index pointers but it is also the end of the nonduplicated numbers.
                 int nextNonDup = 1;
 
-                // We iterate the left pointer with this for loop
+                // We start at 1 not zero cause we are going to be looking back 1 step.
                 for (int i = 1; i < inputArr.Length; i++)
                 {
+                    // If the previous index to nextNonDup is not the same as the index we are currently look in at then...
                     if (inputArr[nextNonDup - 1] != inputArr[i])
                     {
+                        // Make the array at nextNonDup index equal to the item we are looking at.
                         inputArr[nextNonDup] = inputArr[i];
+                        // Iterate nextNonDup one spot.
                         nextNonDup++;
                     }
                 }
 
+                // The position of nextNonDup is the new length of the array.
                 return nextNonDup;
+            }
+        }
+        public static class SquareArray
+        {
+            // Time - O(n+n)
+            // Space - O(n)
+            public static List<int> GenerateListOfSquaresEasy(List<int> inputList)
+            {
+                List<int> squares = new List<int>();
+
+                foreach (var number in inputList)
+                {
+                    squares.Add(number * number);
+                }
+
+                squares.Sort();
+
+                return squares;
+            }
+
+            // Time - O(n)
+            // Space - O(n)
+            public static int[] GenerateArrayOfSquares(int[] inputList)
+            {
+                // The index of the number we are looking at.
+                int highestSqrIndex = inputList.Length - 1;
+                // This'll be the output
+                int[] squares = new int[inputList.Length];
+
+                // The two index pointers
+                int left = 0;
+                int right = inputList.Length - 1;
+
+                // We dont know how many times we are going to loop so we use a while loop
+                while(left <= right)
+                {
+                    // Find out the square root of the numbers under the left and right indexes
+                    int leftSqr = inputList[left] * inputList[left];
+                    int rightSqr = inputList[right] * inputList[right];
+                                        
+                    if(leftSqr > rightSqr)
+                    {
+                        // Iterate the highestSqrIndex down 1 spot and place the leftSqr into that spot.
+                        squares[highestSqrIndex--] = leftSqr;
+                        // Move the left index right 1 spot.
+                        left++;
+                    }
+                    else
+                    {
+                        // Iterate the highestSqrIndexx down 1 spot and place the rightSqr into that spot.
+                        squares[highestSqrIndex--] = rightSqr;
+                        // Move the right index left 1 spot.
+                        right--;
+                    }
+
+                }
+                                
+                return squares;
+            }
+
+            // This one is less efficient then the array once since we have to insert numbers at the beginning of the list which each time we do that is an O(n) time complexity. 
+            public static List<int> GenerateListOfSquares(List<int> inputList)
+            {               
+                List<int> squares = new List<int>();
+
+                int left = 0;
+                int right = inputList.Count - 1;
+
+                while (left <= right)
+                {
+                    int leftSqr = inputList[left] * inputList[left];
+                    int rightSqr = inputList[right] * inputList[right];
+
+                    if (leftSqr > rightSqr)
+                    {
+                        squares.Insert(0, leftSqr);
+                        left++;
+                    }
+                    else
+                    {
+                        squares.Insert(0, rightSqr);
+                        right--;
+                    }
+                }
+
+                return squares;
+            }
+
+            public static List<int> GenerateListOfSquaresMiddleOut(List<int> inputList)
+            {
+                return null;
             }
         }
     }
