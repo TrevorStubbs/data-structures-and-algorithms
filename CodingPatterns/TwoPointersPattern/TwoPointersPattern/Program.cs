@@ -275,5 +275,16 @@ namespace TwoPointersPattern
                 return null;
             }
         }
+        public static class TripletsToZero
+        {
+            public static List<List<int>> FindUniqueTripletsThatEqualZeroEasy(List<int> inputList)
+            {
+                List<List<int>> outputList = new List<List<int>>();
+
+                inputList.Sort();
+
+                return null;
+            }
+        }
     }
 }
