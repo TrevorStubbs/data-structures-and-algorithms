@@ -76,6 +76,23 @@ namespace SlidingWindow
             Console.WriteLine($"Is Permutation: {isEducativePermutation}");
 
             Console.WriteLine();
+
+            List<List<int>> sixBySixList = new List<List<int>>()
+            {
+                new List<int>(){1, 1, 1, 0, 0, 0},
+                new List<int>(){0, 1, 0, 0, 0, 0},
+                new List<int>(){1, 1, 1, 0, 0, 0},
+                new List<int>(){0, 9, 2, -4, -4, 0},
+                new List<int>(){0, 0, 0, -2, 0, 0},
+                new List<int>(){0, 0, -1, -2, -4, 0},
+
+            };
+
+            var largestHourGlass = HourGlass.HourglassSum(sixBySixList);
+
+            Console.WriteLine($"Hour Glass Max: {largestHourGlass}");
+
+            Console.WriteLine();
         }
 
         // Find the average of all contiguous subarrays of size 'K'.
@@ -127,7 +144,7 @@ namespace SlidingWindow
                 }
 
                 return null;
-            }
+            }            
         }
 
         public static class SmallestSubarray
@@ -452,7 +469,7 @@ namespace SlidingWindow
                         return true;
 
                     // Move windowStart if the window becomes larger than pattern.
-                    if(windowEnd >= pattern.Length - 1)
+                    if (windowEnd >= pattern.Length - 1)
                     {
                         // Variable for clarity
                         var leftChar = str[windowStart++];
@@ -475,5 +492,53 @@ namespace SlidingWindow
 
         }
 
+        public static class HourGlass
+        {
+            public static int HourglassSum(List<List<int>> arr)
+            {
+                int max = int.MinValue;
+
+                for (int row = 0; row < arr.Count - 2; row++)
+                {
+
+                    int topSum = 0;
+                    int bottomSum = 0;
+
+                    int windowStart = 0;
+                    int windowSize = 3;
+
+                    for (int windowEnd = 0; windowEnd < arr[row].Count; windowEnd++)
+                    {
+                        topSum += arr[row][windowEnd];
+                        bottomSum += arr[row + 2][windowEnd];
+
+                        if (windowEnd - windowStart > windowSize - 1)
+                        {
+                            topSum -= arr[row][windowStart];
+                            bottomSum -= arr[row + 2][windowStart];
+                            windowStart++;
+                        }
+
+                        if (windowEnd - windowStart == windowSize - 1)
+                        {
+                            int middle = arr[row + 1][windowEnd - 1];                  
+
+                            int sum = CountGlass(topSum, bottomSum, middle);
+
+                            max = Math.Max(max, sum);
+                        }
+
+                    }
+                }
+
+                return max;
+            }
+
+            public static int CountGlass(int top, int bottom, int middle)
+            {
+                return (top + bottom + middle);
+            }
+        }
     }
+
 }
