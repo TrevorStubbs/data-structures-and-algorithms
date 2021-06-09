@@ -95,6 +95,12 @@ namespace TwoPointersPattern
             Console.WriteLine($"Educative Closest: {searchTriplet}");
 
             Console.WriteLine();
+
+            var tripletCount = CountTriplets.CountTripletsThatHasASumLessThanTarget(new List<int>() { -1, 4, 2, 1, 3 }, 5);
+
+            Console.WriteLine($"Triplets Less than target: {tripletCount}");
+
+            Console.WriteLine();
         }
 
         public static class PairSum
@@ -379,7 +385,6 @@ namespace TwoPointersPattern
                 }
             }
         }
-
         public static class TripletSum
         {
             public static int FindTripletSumClosestToTarget(List<int> inputArray, int targetSum)
@@ -477,6 +482,41 @@ namespace TwoPointersPattern
                 }
 
                 return targetSum - smallestDiff;
+            }
+        }
+        public static class CountTriplets
+        {
+            public static int CountTripletsThatHasASumLessThanTarget(List<int> inputList, int target)
+            {
+                inputList.Sort();
+                List<List<int>> tripletList = new List<List<int>>();
+
+                for (int digit = 0; digit < inputList.Count - 2; digit++)
+                {
+                    AddToTripletList(inputList, digit + 1, inputList[digit], target, tripletList);
+                }
+
+                return tripletList.Count;
+            }
+
+            private static void AddToTripletList(List<int> inputList, int leftIndex, int thirdDigit, int target, List<List<int>> tripletList)
+            {
+                int rightIndex = inputList.Count - 1;
+
+                while(leftIndex < rightIndex)
+                {
+                    int sum = thirdDigit + inputList[leftIndex] + inputList[rightIndex];
+
+                    if (sum < target)
+                    {
+                        tripletList.Add(new List<int>() { thirdDigit, inputList[leftIndex], inputList[rightIndex] });
+                        leftIndex++;
+                    }
+                    else if (sum > target)
+                        rightIndex--;
+                    else
+                        leftIndex++;
+                }
             }
         }
     }
