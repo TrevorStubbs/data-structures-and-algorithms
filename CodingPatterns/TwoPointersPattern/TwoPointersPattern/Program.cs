@@ -101,6 +101,21 @@ namespace TwoPointersPattern
             Console.WriteLine($"Triplets Less than target: {tripletCount}");
 
             Console.WriteLine();
+
+            var productsList = ProductLessThanTarget.FindProductsLessThanTarget(new List<int>() { 8, 2, 6, 5 }, 50);
+
+            Console.WriteLine($"Product List: ");
+            foreach (var list in productsList)
+            {
+                Console.Write(" [");
+                foreach (var number in list)
+                {
+                    Console.Write($"{number} ");
+                }
+                Console.Write("] ");
+            }
+
+            Console.WriteLine();
         }
 
         public static class PairSum
@@ -507,7 +522,7 @@ namespace TwoPointersPattern
                 // Right pointer is on the last index
                 int rightIndex = inputList.Count - 1;
 
-                // While loop since we dont how many times we are going to go through the list.
+                // While loop since we don't how many times we are going to go through the list.
                 while (leftIndex < rightIndex)
                 {                    
                     int sum = thirdDigit + inputList[leftIndex] + inputList[rightIndex];
@@ -539,13 +554,21 @@ namespace TwoPointersPattern
             {
                 List<List<int>> outputList = new List<List<int>>();
 
-                // left = 0
-                // right = left + 1;
+                if (inputList[0] < target)
+                    outputList.Add(new List<int>() { inputList[0] });
 
-                //if list[left] < target -> add list[left]
-                //if list[right] < target -> add list[right]
+                for (int i = 1; i < inputList.Count; i++)
+                {
+                    if(inputList[i] < target)
+                    {
+                        outputList.Add(new List<int>() { inputList[i] });
 
-                // if list[left] * list[right] < target -> add list[left] , list[right]
+                        if(inputList[i] * inputList[i-1] < target)
+                        {
+                            outputList.Add(new List<int>() { inputList[i - 1], inputList[i] });
+                        }
+                    }
+                }
 
                 return outputList;
             }
