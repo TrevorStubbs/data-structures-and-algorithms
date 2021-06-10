@@ -488,11 +488,14 @@ namespace TwoPointersPattern
         {
             public static int CountTripletsThatHasASumLessThanTarget(List<int> inputList, int target)
             {
+                // Sort the List to be able to use 2 pointers
                 inputList.Sort();
                 List<List<int>> tripletList = new List<List<int>>();
 
+                // Start a loop to define a comparator pointer
                 for (int digit = 0; digit < inputList.Count - 2; digit++)
                 {
+                    // Left = digit + 1, comparator == inputList[digit]
                     AddToTripletList(inputList, digit + 1, inputList[digit], target, tripletList);
                 }
 
@@ -501,22 +504,50 @@ namespace TwoPointersPattern
 
             private static void AddToTripletList(List<int> inputList, int leftIndex, int thirdDigit, int target, List<List<int>> tripletList)
             {
+                // Right pointer is on the last index
                 int rightIndex = inputList.Count - 1;
 
-                while(leftIndex < rightIndex)
-                {
+                // While loop since we dont how many times we are going to go through the list.
+                while (leftIndex < rightIndex)
+                {                    
                     int sum = thirdDigit + inputList[leftIndex] + inputList[rightIndex];
 
+                    // If the goal has been met...
                     if (sum < target)
                     {
+                        // Add the triplet to the triplet list
                         tripletList.Add(new List<int>() { thirdDigit, inputList[leftIndex], inputList[rightIndex] });
+
+                        // Since the these 3 numbers work we know that any number less than the number at the right index will be less than the target so we just add those triplets to the list.
+                        for (int i = rightIndex - 1; i > leftIndex; i--)
+                        {
+                            tripletList.Add(new List<int>() { thirdDigit, inputList[leftIndex], inputList[rightIndex] });
+                        }
+
+                        // Iterate the leftIndex to the right.
                         leftIndex++;
                     }
-                    else if (sum > target)
-                        rightIndex--;
-                    else
-                        leftIndex++;
+
+                    // Once out of the loop we iterate the right index to the left.
+                    rightIndex--;
                 }
+            }
+        }
+        public static class ProductLessThanTarget
+        {
+            public static List<List<int>> FindProductsLessThanTarget(List<int> inputList, int target)
+            {
+                List<List<int>> outputList = new List<List<int>>();
+
+                // left = 0
+                // right = left + 1;
+
+                //if list[left] < target -> add list[left]
+                //if list[right] < target -> add list[right]
+
+                // if list[left] * list[right] < target -> add list[left] , list[right]
+
+                return outputList;
             }
         }
     }
