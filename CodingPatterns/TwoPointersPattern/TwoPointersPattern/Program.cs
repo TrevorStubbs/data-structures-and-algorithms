@@ -116,6 +116,22 @@ namespace TwoPointersPattern
             }
 
             Console.WriteLine();
+
+            var productsEducative = ProductLessThanTarget.FindProductEducative(new int[] { 8, 2, 2, 5 }, 50);
+
+            Console.WriteLine($"Product List: ");
+
+            foreach (var list in productsEducative)
+            {
+                Console.Write(" [");
+                foreach (var number in list)
+                {
+                    Console.Write($"{number} ");
+                }
+                Console.Write("] ");
+            }
+
+            Console.WriteLine();
         }
 
         public static class PairSum
@@ -571,6 +587,38 @@ namespace TwoPointersPattern
                 }
 
                 return outputList;
+            }
+
+            public static List<List<int>> FindProductEducative(int[] arr, int target)
+            {
+                List<List<int>> result = new List<List<int>>();
+
+                // Product must be 1 not 0 cause multiplying 0 will result in a 0 :)
+                int product = 1;
+                int left = 0;
+
+                for (int right = 0; right < arr.Length; right++)
+                {
+                    // Multiply the item in the array.
+                    product *= arr[right];
+
+                    // If the product is larger than the target and the left indx is less than the length of the array
+                    while (product >= target && left < arr.Length)
+                        // Divide that item to remove that multiplication (acts like subtracting a number when we are summing) then iterate left once to the right.
+                        product /= arr[left++];                   
+
+                    List<int> tempList = new List<int>();
+
+                    for (int i = right; i >= left; i--)
+                    {
+                        // add to the tempList.
+                        tempList.Add(arr[i]);
+                        // Add the current version of the tempList to the result List.
+                        result.Add(new List<int>(tempList));
+                    }
+                }
+                                
+                return result;
             }
         }
     }
