@@ -132,6 +132,17 @@ namespace TwoPointersPattern
             }
 
             Console.WriteLine();
+
+            var dutchFlag = DutchFlag.SortInPlace(new List<int>() { 2, 2, 0, 1, 2, 0 });
+
+            Console.WriteLine("DutchFlag = ");
+
+            foreach (var number in dutchFlag)
+            {
+                Console.Write($"{number} ");
+            }
+
+            Console.WriteLine();
         }
 
         public static class PairSum
@@ -540,7 +551,7 @@ namespace TwoPointersPattern
 
                 // While loop since we don't how many times we are going to go through the list.
                 while (leftIndex < rightIndex)
-                {                    
+                {
                     int sum = thirdDigit + inputList[leftIndex] + inputList[rightIndex];
 
                     // If the goal has been met...
@@ -575,11 +586,11 @@ namespace TwoPointersPattern
 
                 for (int i = 1; i < inputList.Count; i++)
                 {
-                    if(inputList[i] < target)
+                    if (inputList[i] < target)
                     {
                         outputList.Add(new List<int>() { inputList[i] });
 
-                        if(inputList[i] * inputList[i-1] < target)
+                        if (inputList[i] * inputList[i - 1] < target)
                         {
                             outputList.Add(new List<int>() { inputList[i - 1], inputList[i] });
                         }
@@ -589,6 +600,8 @@ namespace TwoPointersPattern
                 return outputList;
             }
 
+            // Time: O(n^3)
+            // Space: O(n^3)
             public static List<List<int>> FindProductEducative(int[] arr, int target)
             {
                 List<List<int>> result = new List<List<int>>();
@@ -602,10 +615,10 @@ namespace TwoPointersPattern
                     // Multiply the item in the array.
                     product *= arr[right];
 
-                    // If the product is larger than the target and the left indx is less than the length of the array
+                    // If the product is larger than the target and the left index is less than the length of the array
                     while (product >= target && left < arr.Length)
                         // Divide that item to remove that multiplication (acts like subtracting a number when we are summing) then iterate left once to the right.
-                        product /= arr[left++];                   
+                        product /= arr[left++];
 
                     List<int> tempList = new List<int>();
 
@@ -617,9 +630,105 @@ namespace TwoPointersPattern
                         result.Add(new List<int>(tempList));
                     }
                 }
-                                
+
                 return result;
             }
         }
+        public static class DutchFlag
+        {
+            public static List<int> SortInPlace(List<int> inputList)
+            {
+                for (int leftIndex = 0; leftIndex < inputList.Count - 1; leftIndex++)
+                {
+                    for (int rightIndex = leftIndex + 1; rightIndex < inputList.Count; rightIndex++)
+                    {
+                        if (inputList[leftIndex] > inputList[rightIndex])
+                        {
+                            int tempNumber = inputList[leftIndex];
+                            inputList[leftIndex] = inputList[rightIndex];
+                            inputList[rightIndex] = tempNumber;
+                        }
+                    }
+                }
+
+                return inputList;
+            }
+
+            // Time: O(n)
+            // Space: O(1)
+            public static void SortInPlaceEducative(int[] arr)
+            {
+                int low = 0, high = arr.Length - 1;
+                for (int i = 0; i < high;)
+                {
+                    if (arr[i] == 0)
+                    {
+                        Swap(arr, i, low);
+                        i++;
+                        low++;
+                    }
+                    else if (arr[i] == 1)
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        Swap(arr, i, high);
+                        high--;
+                    }
+                }
+            }
+
+            private static void Swap(int[] arr, int i, int j)
+            {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        public static class QaudSum
+        {
+            public static List<List<int>> ListsOfQuads(List<int> inputList, int target)
+            {
+                List<List<int>> outputList = new List<List<int>>();
+
+                int outLeft = 0, outRight = inputList.Count - 1;
+
+                while (outLeft < outRight)
+                {
+                    int inLeft = outLeft + 1, inRight = outRight - 1;
+                    while (inLeft < inRight)
+                    {
+                        int sum = inputList[outLeft] + inputList[inLeft] + inputList[inRight] + inputList[outRight];
+
+                        if (sum == target)
+                        {
+
+                            outputList.Add(new List<int>()
+                            {
+                                inputList[outLeft],
+                                inputList[inLeft],
+                                inputList[inRight],
+                                inputList[outRight]
+                            });
+
+                            while (inLeft < inRight && inputList[inLeft] == inputList[inLeft - 1])
+                            {
+                                inLeft++;
+                            }
+                            while (inLeft < inRight && inputList[inRight] == inputList[inRight + 1])
+                            {
+                                inRight--;
+                            }
+                        }
+
+
+                    }
+                }
+
+                return outputList;
+            }
+        }
+
     }
 }
