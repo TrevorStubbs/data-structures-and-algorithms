@@ -143,6 +143,22 @@ namespace TwoPointersPattern
             }
 
             Console.WriteLine();
+
+            var quad = QaudSum.ListOfQuadsV2(new List<int>() { 4, 1, 2, -1, 1, -3 }, 1);
+
+            Console.WriteLine("Quad List: ");
+            foreach (var list in quad)
+            {
+                Console.Write($"[");
+
+                foreach (var number in list)
+                {
+                    Console.Write($"{number} ");
+                }
+                Console.Write("]");
+            }
+
+            Console.WriteLine();
         }
 
         public static class PairSum
@@ -727,6 +743,66 @@ namespace TwoPointersPattern
                 }
 
                 return outputList;
+            }
+
+            public static List<List<int>> ListOfQuadsV2(List<int> inputList, int target)
+            {
+                inputList.Sort();
+                List<List<int>> outputList = new List<List<int>>();
+
+                int leftOne = 0, leftTwo = leftOne + 1, rightOne = inputList.Count - 1, rightTwo = rightOne - 1;
+
+                while (leftOne < rightOne && leftTwo < rightTwo)
+                {
+                    int sum = inputList[leftOne] + inputList[leftTwo] + inputList[rightOne] + inputList[rightTwo];
+
+                    if (sum == target)
+                    {
+                        outputList.Add(new List<int>()
+                        {
+                            inputList[leftOne],
+                            inputList[leftTwo],
+                            inputList[rightTwo],
+                            inputList[rightOne]
+                        });
+
+                        //leftOne++;
+                        if (leftTwo - leftOne > 1)
+                            leftOne++;
+                        else
+                            leftTwo++;
+                    }
+
+                    else if (sum < target)
+                    {
+                        if (leftTwo == leftOne + 1)
+                            leftTwo++;
+                        else
+                            leftOne++;
+                    }
+
+                    else if (sum > target)
+                    {
+                        if (rightTwo == rightOne - 1)
+                            rightTwo--;
+                        else
+                            rightOne--;
+                    }
+
+                    // check lefts
+                    // if leftTwo == leftOne + 1 leftTwo++;
+                    // else leftOne++;
+                    // check rights
+                    // if rightTwo == rightOne - 1 rightTwo--;
+                    // else rightTwo--;
+                }
+
+                return outputList;
+            }
+
+            public static List<List<int>> ListOfQuadsEducative(int[] arr, int target)
+            {
+
             }
         }
 
