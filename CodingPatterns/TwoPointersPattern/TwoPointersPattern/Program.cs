@@ -740,6 +740,7 @@ namespace TwoPointersPattern
                             leftTwo++;
                     }
 
+                    // if the sum is less than the target move one of the left pointers
                     else if (sum < target)
                     {
                         if (leftTwo == leftOne + 1)
@@ -748,20 +749,14 @@ namespace TwoPointersPattern
                             leftOne++;
                     }
 
+                    // else if the sum is greater than the target then move one of the right pointers.
                     else if (sum > target)
                     {
                         if (rightTwo == rightOne - 1)
                             rightTwo--;
                         else
                             rightOne--;
-                    }
-
-                    // check lefts
-                    // if leftTwo == leftOne + 1 leftTwo++;
-                    // else leftOne++;
-                    // check rights
-                    // if rightTwo == rightOne - 1 rightTwo--;
-                    // else rightTwo--;
+                    }                    
                 }
 
                 return outputList;
