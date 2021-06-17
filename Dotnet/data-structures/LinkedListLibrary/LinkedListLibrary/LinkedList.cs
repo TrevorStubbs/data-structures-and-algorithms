@@ -172,7 +172,7 @@ namespace LinkedListLibrary
                     else
                     {
                         Node newNode = new Node(newValue);
-                        Node tempNode = methodCurrent.Next;                       
+                        Node tempNode = methodCurrent.Next;
                         methodCurrent.Next = newNode;
                         newNode.Next = tempNode;
                         return;
@@ -186,6 +186,26 @@ namespace LinkedListLibrary
             }
         }
 
+        public void MakeCyclic()
+        {            
+            Node last = FindLastNode();
+            last.Next = Head;
+        }
+
+        private Node FindLastNode()
+        {
+            if (Head == null)
+            {
+                throw new Exception("Cannot make an empty list cyclic.");
+            }
+
+            while (Current.Next != null)
+            {
+                Current = Current.Next;
+            }
+
+            return Current;
+        }
 
         /// <summary>
         /// Finds the the value of the node from kth spot from the end of the list.
@@ -203,13 +223,13 @@ namespace LinkedListLibrary
             }
 
             Node methodCurrent = Head;
-            if(methodCurrent == null)
+            if (methodCurrent == null)
             {
                 throw new Exception("The list is empty.");
             }
 
             int counter = 0;
-            
+
             while (methodCurrent != null)
             {
                 methodCurrent = methodCurrent.Next;
@@ -228,7 +248,7 @@ namespace LinkedListLibrary
                 methodCurrent = methodCurrent.Next;
             }
             return methodCurrent.Value;
-            
+
         }
 
         public void ReverseLinkedList()

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastAndSlow", "FastAndSlow\FastAndSlow.csproj", "{DB982239-8276-46F3-B8E7-55D6FCB93A47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB982239-8276-46F3-B8E7-55D6FCB93A47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB982239-8276-46F3-B8E7-55D6FCB93A47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB982239-8276-46F3-B8E7-55D6FCB93A47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB982239-8276-46F3-B8E7-55D6FCB93A47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6E1D977B-74B8-4B4F-BC20-BF92782E9566}
+	EndGlobalSection
+EndGlobal

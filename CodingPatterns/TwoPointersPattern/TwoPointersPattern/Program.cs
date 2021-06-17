@@ -144,7 +144,7 @@ namespace TwoPointersPattern
 
             Console.WriteLine();
 
-            var quad = QaudSum.ListOfQuadsV2(new List<int>() { 4, 1, 2, -1, 1, -3 }, 1);
+            var quad = QaudSum.ListOfQuads(new List<int>() { 4, 1, 2, -1, 1, -3, 28, -26 }, 1);
 
             Console.WriteLine("Quad List: ");
             foreach (var list in quad)
@@ -704,60 +704,25 @@ namespace TwoPointersPattern
         }
         public static class QaudSum
         {
-            public static List<List<int>> ListsOfQuads(List<int> inputList, int target)
-            {
-                List<List<int>> outputList = new List<List<int>>();
-
-                int outLeft = 0, outRight = inputList.Count - 1;
-
-                while (outLeft < outRight)
-                {
-                    int inLeft = outLeft + 1, inRight = outRight - 1;
-                    while (inLeft < inRight)
-                    {
-                        int sum = inputList[outLeft] + inputList[inLeft] + inputList[inRight] + inputList[outRight];
-
-                        if (sum == target)
-                        {
-
-                            outputList.Add(new List<int>()
-                            {
-                                inputList[outLeft],
-                                inputList[inLeft],
-                                inputList[inRight],
-                                inputList[outRight]
-                            });
-
-                            while (inLeft < inRight && inputList[inLeft] == inputList[inLeft - 1])
-                            {
-                                inLeft++;
-                            }
-                            while (inLeft < inRight && inputList[inRight] == inputList[inRight + 1])
-                            {
-                                inRight--;
-                            }
-                        }
-
-
-                    }
-                }
-
-                return outputList;
-            }
-
-            public static List<List<int>> ListOfQuadsV2(List<int> inputList, int target)
-            {
+            // Time: O(n^2) - Due to the sort then the algo.
+            // Space: O(n)
+            public static List<List<int>> ListOfQuads(List<int> inputList, int target)
+            {                
                 inputList.Sort();
                 List<List<int>> outputList = new List<List<int>>();
 
+                // We are using 4 pointers.
                 int leftOne = 0, leftTwo = leftOne + 1, rightOne = inputList.Count - 1, rightTwo = rightOne - 1;
 
                 while (leftOne < rightOne && leftTwo < rightTwo)
                 {
+                    // Find the Sum
                     int sum = inputList[leftOne] + inputList[leftTwo] + inputList[rightOne] + inputList[rightTwo];
 
+                    // If the sum == target
                     if (sum == target)
                     {
+                        // Add the quad to the list
                         outputList.Add(new List<int>()
                         {
                             inputList[leftOne],
@@ -766,9 +731,11 @@ namespace TwoPointersPattern
                             inputList[rightOne]
                         });
 
-                        //leftOne++;
+                        // Move one of the left pointers.
+                        // If the difference between the far left pointer to the next left pointer is greater than 2 then iterate the far left pointer once to the right.
                         if (leftTwo - leftOne > 1)
                             leftOne++;
+                        // Else move the inner left pointer
                         else
                             leftTwo++;
                     }
