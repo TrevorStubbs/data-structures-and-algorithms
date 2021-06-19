@@ -15,7 +15,7 @@ namespace FastAndSlow
             cyclicList.Insert(3);
             cyclicList.Insert(2);
             cyclicList.Insert(1);
-            cyclicList.MakeCyclic();
+            cyclicList.MakeCyclic(3);            
 
             var isCyclic = CyclicLinkedList.IsCyclic(cyclicList);
 
@@ -26,6 +26,22 @@ namespace FastAndSlow
             var cyclicLength = CyclicLinkedList.FindCyclicLLLength(cyclicList.Head);
 
             Console.WriteLine($"Cycle Length: {cyclicLength}");
+
+            var educativeCycleLength = CyclicLinkedList.FindCycleLength(cyclicList.Head);
+
+            Console.WriteLine($"Educative Cycle Length: {educativeCycleLength}");
+
+            Console.WriteLine();
+
+            var start = CyclicLinkedList.FindCycleStart(cyclicList.Head);
+
+            Console.WriteLine($"Start of the list: {start.Value}");
+
+            Console.WriteLine();
+
+            var educativeStart = LinkedListStart.FindCycleStart(cyclicList.Head);
+
+            Console.WriteLine($"Starting Node (Educative): {educativeStart.Value}");
         }
 
         public static class CyclicLinkedList
@@ -76,16 +92,140 @@ namespace FastAndSlow
 
                 slow = slow.Next;
 
-                while(cycleStart != slow)
+                while (cycleStart != slow)
                 {
                     result++;
                     slow = slow.Next;
                 }
 
-                //if(fast != null || fast.Next != null)
-                //    throw new Exception("This Linked List is not Cyclical.");
-
                 return result;
+            }
+
+            public static int FindCycleLength(Node head)
+            {
+                Node slow = head;
+                Node fast = head;
+
+                while (fast != null && fast.Next != null)
+                {
+                    fast = fast.Next.Next;
+                    slow = slow.Next;
+
+                    if (slow == fast)
+                        return CalcCycleLength(slow);
+                }
+
+                return 0;
+            }
+
+            private static int CalcCycleLength(Node slow)
+            {
+                Node current = slow;
+                int cycleLength = 0;
+
+                do
+                {
+                    current = current.Next;
+                    cycleLength++;
+                } 
+                while (current != slow);
+
+                return cycleLength;
+            }
+
+            public static Node FindCycleStart(Node head)
+            {
+                Node fast = head;
+                Node slow = head;
+
+                while (fast != null && fast.Next != null)
+                {
+                    fast = fast.Next.Next;
+                    slow = slow.Next;
+
+                    if (fast == slow)
+                    {
+                        return FindStart(slow);
+                    }
+                }                
+
+                return head;
+            }
+
+            private static Node FindStart(Node slow)
+            {
+                Node current = slow;
+                int start = int.MaxValue;
+                Node startNode = null;
+
+                do
+                {
+                    current = current.Next;
+
+                    if (current.Value < start)
+                    {
+                        start = current.Value;
+                        startNode = current;
+                    }
+                }
+                while (current != slow);
+
+                return startNode;
+            }
+        }
+
+        public static class LinkedListStart
+        {
+            public static Node FindCycleStart(Node head)
+            {
+                int cycleLength = 0;
+                Node slow = head;
+                Node fast = head;
+                while (fast != null && fast.Next != null)
+                {
+                    fast = fast.Next.Next;
+                    slow = slow.Next;
+
+                    if(slow == fast)
+                    {
+                        cycleLength = CalcCycleLength(slow);
+                        break;
+                    }
+                }
+
+                return FindStart(head, cycleLength);
+            }
+
+            private static int CalcCycleLength(Node slow)
+            {
+                Node current = slow;
+                int cycleLength = 0;
+                do
+                {
+                    current = current.Next;
+                    cycleLength++;
+                }
+                while (current != slow);
+
+                return cycleLength;
+            }
+
+            private static Node FindStart(Node head, int cycleLength)
+            {
+                Node pointer1 = head, pointer2 = head;
+                while (cycleLength > 0)
+                {
+                    pointer2 = pointer2.Next;
+                    cycleLength--;
+                }
+
+                while (pointer1 != pointer2)
+                {
+                    pointer1 = pointer1.Next;
+                    pointer2 = pointer2.Next;
+                }
+
+                return pointer1;
             }
         }
     }

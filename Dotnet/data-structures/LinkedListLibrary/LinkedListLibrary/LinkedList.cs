@@ -192,6 +192,44 @@ namespace LinkedListLibrary
             last.Next = Head;
         }
 
+        public void MakeCyclic(int cycleStart)
+        {
+            Node last = FindLastNode();
+
+            Node current = Head;
+
+            while(current != null)
+            {
+                if(current.Value == cycleStart)
+                {
+                    last.Next = current;
+                    return;
+                }
+
+                current = current.Next;
+            }
+
+            throw new Exception("List dose not contain that value.");
+        }
+
+        public void MakeCyclic(int cycleStart, int cycleEnd)
+        {
+            Node current = Head;
+            Node start = null;
+            Node end = null;
+
+            while(current.Next != null)
+            {
+                if (current.Value == cycleStart)
+                    start = current;
+
+                if (current.Value == cycleEnd)
+                    end = current;
+            }
+
+            end.Next = start;
+        }
+
         private Node FindLastNode()
         {
             if (Head == null)
