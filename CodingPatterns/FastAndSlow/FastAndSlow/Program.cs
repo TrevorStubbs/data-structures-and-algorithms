@@ -52,7 +52,7 @@ namespace FastAndSlow
 
             Console.WriteLine();
 
-            var fastSlowHappyNumber = HappyNumber.IsHappyNumberFastSlow(23);
+            var fastSlowHappyNumber = HappyNumber.IsHappyNumberFastSlow(1234);
 
             Console.WriteLine($"Is number happy (Fast/Slow)? {fastSlowHappyNumber}");
 
