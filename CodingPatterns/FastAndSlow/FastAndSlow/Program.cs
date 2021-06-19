@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using LinkedListLibrary;
 
 
@@ -15,7 +16,7 @@ namespace FastAndSlow
             cyclicList.Insert(3);
             cyclicList.Insert(2);
             cyclicList.Insert(1);
-            cyclicList.MakeCyclic(3);            
+            cyclicList.MakeCyclic(3);
 
             var isCyclic = CyclicLinkedList.IsCyclic(cyclicList);
 
@@ -42,6 +43,20 @@ namespace FastAndSlow
             var educativeStart = LinkedListStart.FindCycleStart(cyclicList.Head);
 
             Console.WriteLine($"Starting Node (Educative): {educativeStart.Value}");
+
+            Console.WriteLine();
+
+            var happyNumber = HappyNumber.IsHappyNumber(23);
+
+            Console.WriteLine($"Is number happy? {happyNumber}");
+
+            Console.WriteLine();
+
+            var fastSlowHappyNumber = HappyNumber.IsHappyNumberFastSlow(23);
+
+            Console.WriteLine($"Is number happy (Fast/Slow)? {fastSlowHappyNumber}");
+
+            Console.WriteLine();
         }
 
         public static class CyclicLinkedList
@@ -127,7 +142,7 @@ namespace FastAndSlow
                 {
                     current = current.Next;
                     cycleLength++;
-                } 
+                }
                 while (current != slow);
 
                 return cycleLength;
@@ -147,7 +162,7 @@ namespace FastAndSlow
                     {
                         return FindStart(slow);
                     }
-                }                
+                }
 
                 return head;
             }
@@ -186,7 +201,7 @@ namespace FastAndSlow
                     fast = fast.Next.Next;
                     slow = slow.Next;
 
-                    if(slow == fast)
+                    if (slow == fast)
                     {
                         cycleLength = CalcCycleLength(slow);
                         break;
@@ -226,6 +241,115 @@ namespace FastAndSlow
                 }
 
                 return pointer1;
+            }
+        }
+
+        public static class HappyNumber
+        {
+            // This does not use Fast/Slow. I use a HastSet to keep track if there are any repeats. 
+            // Time O(n)
+            // Space O(1)
+            public static bool IsHappyNumber(int inputNumber)
+            {
+                int result = inputNumber;
+                HashSet<int> set = new HashSet<int>();
+
+                // If result ever becomes 1 then we know that we have found a happy number
+                while (result != 1)
+                {
+                    int sum = 0;
+                    // This algo makes the number into a string and then loop through each digit in the string and then parse them back to a digit so we can square them.
+                    string strNumber = result.ToString();
+
+                    foreach (var ch in strNumber)
+                    {
+                        string chStr = ch.ToString();
+                        int chInt = Int32.Parse(chStr);
+                        sum += (chInt * chInt);
+                    }
+
+                    // If the HashSet has a the number then we have entered a loop
+                    if (set.Contains(sum))
+                        return false;
+                    else
+                    {
+                        set.Add(sum);
+                        result = sum;
+                    }
+                }
+
+                // If we have broken out of the loop then we know that we have found a happy number
+                return true;
+            }
+
+            // This one uses the fast/slow pattern
+            // Time: O(logN)
+            // Space: O(1)
+            public static bool IsHappyNumberFastSlow(int inputNumber)
+            {
+                // Define the fast/slow pointers
+                int fast = inputNumber;
+                int slow = inputNumber;
+
+                // If fast or slow becomes 1 then break out of the loop (we have found a happy number)
+                while (fast != 1 && slow != 1)
+                {
+                    // Iterate the pointers
+                    slow = GetSumNoParse(slow);
+                    fast = GetSumNoParse(GetSumNoParse(fast));
+
+                    // If fast == slow then we have found a loop
+                    if (fast == slow)
+                        return false;
+                }
+
+                return true;
+            }
+
+            // Even if we keep squaring a 1 it will always result in a 1
+            // Therefore if fast becomes 1 it will stay there every iteration.
+            public static bool IsHappyNumberEducative(int inputNumber)
+            {
+                int slow = inputNumber, fast = inputNumber;
+
+                do
+                {
+                    slow = GetSumNoParse(slow);
+                    fast = GetSumNoParse(GetSumNoParse(fast));
+                }
+                while (slow != fast);
+
+                return slow == 1;
+            }
+
+            // Helper method with the parse pattern
+            private static int GetSum(int inputNumber)
+            {
+                int sum = 0;
+                string inputString = inputNumber.ToString();
+
+                foreach (var ch in inputString)
+                {
+                    string chStr = ch.ToString();
+                    int chInt = Int32.Parse(chStr);
+                    sum += (chInt * chInt);
+                }
+
+                return sum;
+            }
+
+            // This pattern squares each digit without having to convert the number to a string and back.
+            private static int GetSumNoParse(int inputNumer)
+            {
+                int sum = 0, digit;
+                while (inputNumer > 0)
+                {
+                    digit = inputNumer % 10;
+                    sum += digit * digit;
+                    inputNumer /= 10;
+                }
+
+                return sum;
             }
         }
     }
