@@ -57,6 +57,20 @@ namespace FastAndSlow
             Console.WriteLine($"Is number happy (Fast/Slow)? {fastSlowHappyNumber}");
 
             Console.WriteLine();
+
+            LinkedList ll = new LinkedList();
+            ll.Insert(6);
+            ll.Insert(5);
+            ll.Insert(4);
+            ll.Insert(3);
+            ll.Insert(2);
+            ll.Insert(1);
+
+            var middle = MiddleNode.FindMiddleNode(ll.Head);
+
+            Console.WriteLine($"The middle node is: {middle.Value}");
+
+            Console.WriteLine();
         }
 
         public static class CyclicLinkedList
@@ -351,6 +365,34 @@ namespace FastAndSlow
 
                 return sum;
             }
+        }
+
+        public static class MiddleNode
+        {
+            // Time: O(n)
+            // Space: O(1)
+            public static Node FindMiddleNode(Node head)
+            {                
+                Node fast = head;
+                Node slow = head;
+
+                while(fast != null && fast.Next != null)
+                {
+                    slow = slow.Next;
+                    fast = fast.Next.Next;
+                }
+
+                return slow;
+            }
+        }
+
+        public static class PalindromeLinkedList
+        {
+            // 1 2 3 2 1 -> null
+            
+            // 1 2 3 3 2 1 
+
+            
         }
     }
 }
