@@ -71,6 +71,20 @@ namespace FastAndSlow
             Console.WriteLine($"The middle node is: {middle.Value}");
 
             Console.WriteLine();
+
+            LinkedList palList = new LinkedList();
+            palList.Insert(2);
+            palList.Insert(4);
+            palList.Insert(6);
+            palList.Insert(4);
+            palList.Insert(2);
+
+            bool isPal = PalindromeLinkedList.IsLinkedListAPalindrome(palList.Head);
+
+            Console.WriteLine($"Is the List a Palindrome? {isPal}");
+
+            Console.WriteLine();
+
         }
 
         public static class CyclicLinkedList
@@ -372,11 +386,11 @@ namespace FastAndSlow
             // Time: O(n)
             // Space: O(1)
             public static Node FindMiddleNode(Node head)
-            {                
+            {
                 Node fast = head;
                 Node slow = head;
 
-                while(fast != null && fast.Next != null)
+                while (fast != null && fast.Next != null)
                 {
                     slow = slow.Next;
                     fast = fast.Next.Next;
@@ -388,11 +402,62 @@ namespace FastAndSlow
 
         public static class PalindromeLinkedList
         {
-            // 1 2 3 2 1 -> null
-            
-            // 1 2 3 3 2 1 
+            // Time: O(n)
+            // Space: O(1)
+            public static bool IsLinkedListAPalindrome(Node head)
+            {
+                // Fast/slow pointers
+                Node fast = head, slow = head;
 
-            
+                // Find the middle of the the LL
+                while (fast != null && fast.Next != null)
+                {
+                    fast = fast.Next.Next;
+                    slow = slow.Next;
+                }                
+
+                // Reverse the 2nd half of the LL
+                Node headSecondHalf = ReverseLinkedList(slow);
+                Node copySecondHalf = headSecondHalf; // Make a copy of the 2nd half head so we can reverse it back later
+
+                // Loop through the 2 LL halves
+                while(head != null && headSecondHalf != null)
+                {
+                    //if the value of both of the nodes are not the same then the LL is not a palindrome
+                    if (head.Value != headSecondHalf.Value)
+                        break;
+
+                    // Travers each LL
+                    head = head.Next;
+                    headSecondHalf = headSecondHalf.Next;
+                }
+
+                // Revert the 2nd half of the LL back to it's original state.
+                ReverseLinkedList(copySecondHalf);
+
+                // If the loop broke early then eiher head will not be null.
+                if (head == null || headSecondHalf == null)
+                    return true;
+                return false;
+            }
+
+            private static Node ReverseLinkedList(Node head)
+            {
+                Node prev = null;
+                while(head != null)
+                {
+                    // Standard reversing algorithm.
+                    Node next = head.Next;
+                    head.Next = prev;
+                    prev = head;
+                    head = next;
+                }
+
+                return prev;
+            }
+
+
+
         }
     }
 }
