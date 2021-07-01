@@ -124,7 +124,23 @@ public static List<int> FindAPairsSumThatMatchesTarget(List<int> inputList, int 
             }
 ```
 ## Fast & Slow (Hare & Tortoise)
+``` CSharp
+public static void MethodName(Node head)
+{
+    Node fast = head;
+    Node slow = head;
+
+    while(fast != null && fast.Next != null)
+    {
+        fast = fast.Next.Next;
+        slow = slow.Next;
+    }
+}
+```
+
 ## Merge Intervals
+![Merge Options](./assets/MergeOptions.png)
+
 ## Cyclic Sort
 ## In-place Reversal of a Linked List
 ## Tree Breath First Search
