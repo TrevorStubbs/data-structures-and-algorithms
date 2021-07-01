@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MergeIntervalsPattern", "MergeIntervalsPattern.csproj", "{21E57685-5054-4932-A56A-572198465634}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21E57685-5054-4932-A56A-572198465634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21E57685-5054-4932-A56A-572198465634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21E57685-5054-4932-A56A-572198465634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21E57685-5054-4932-A56A-572198465634}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9790028-EE8E-402C-BE19-F02987E0A9AF}
+	EndGlobalSection
+EndGlobal
